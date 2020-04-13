@@ -4,12 +4,14 @@
     <title>ForClimers</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <!--application.scss、application.jsの読み込み-->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <!--yieldに他のviewを差し込んで表示-->
     <%= yield %>
   </body>
 </html>

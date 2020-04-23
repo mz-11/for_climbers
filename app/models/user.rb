@@ -7,4 +7,6 @@ class User < ApplicationRecord
    validates :password, presence: true
   
    has_secure_password #gem bcryptをインストールすることで使用できる
+   
+   has_many :posts
 end

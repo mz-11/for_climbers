@@ -15,36 +15,44 @@
     <!--flash[:key] = "value" -->
     <% flash.each do |key, value| %> 
       <div class="alert alert-<%= key %>" role="alert">
+        <!--alert-<%= key %>でbootstrapのデザインがで適用される-->
         <%= value %>
       </div>
     <% end %>
 
     <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
       <div class="container">
-        <%= link_to root_path do %>
-          <span><%= image_tag "logo.png", class: "navbar-brand" %></span>
-        <% end %>
+        <div class="nav navbar-nav navbar-brand">
+          <%= link_to "For climbers", root_path %>
+            <!--<span><%= image_tag "logo.png", class: "navbar-brand" %></span>-->
+        </div>
+        
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
+            <li>
+              <%= link_to "About", pages_about_path %>
+            </li>
             <li>
               <%= link_to "投稿一覧", root_path %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <%= image_tag "icons/camera.png" %>
-              <% end %>
+              <%= link_to "#" %>
             </li>
             <li>
-              <%= link_to logout_path, method: :delete do %>
-                <%= image_tag "logout.png" %>
-              <% end %>
+              <%= link_to "Logout", logout_path, method: :delete %>
             </li>
           <% else %>
             <li>
-              <%= link_to "sign up", new_user_path %>
+              <%= link_to "About", pages_about_path %>
             </li>
             <li>
-              <%= link_to "ログイン", login_path %>
+              <%= link_to "投稿一覧", root_path %>
+            </li>
+            <li>
+              <%= link_to "Sign up", new_user_path %>
+            </li>
+            <li>
+              <%= link_to "Login", login_path %>
             </li>
           <% end %>
         </ul>
@@ -55,7 +63,7 @@
     <%= yield %>
     
     <script>
-      $(funtion(){
+      $(function(){
         $('.alert').fadeOut(3000);
       });
     </script>

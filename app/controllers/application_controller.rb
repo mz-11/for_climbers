@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   
   private
   def current_user #現在ログインしているuserを返すメソッド
+    # https://qiita.com/aiandrox/items/f4215471f40325d69523
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
   

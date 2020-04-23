@@ -8,10 +8,10 @@ class UsersController < ApplicationController
     # @user = User.new(name: params[:user][:name], email: params[:user][:email])
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path, notice: "#{@user.name}さんの登録が完了しました！"
+      redirect_to root_path, success: "#{@user.name}さんの登録が完了しました！"
       # noticeが表示されるようにはviewの設定を行う
     else
-      flash.now[:alert] = "登録に失敗しました！"
+      flash.now[:danger] = "登録に失敗しました！"
       render :new
     end
   end

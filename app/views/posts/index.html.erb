@@ -1,0 +1,38 @@
+<div class="topic-index-wrapper">
+  <div class="container">
+    <% @posts.each do |post| %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="topic-index-single">
+            <h2 class="topic-author">
+              
+              <%= post.user.name %>
+            </h2>
+            
+            <%= image_tag post.image.url %>
+            
+            
+            <h4><%= post.user.name %></h4>
+            
+            
+            <%= post.id %>
+            
+            
+            <%= post.gym_name %>
+            <%= post.grade %>
+            <%= post.category %>
+            <%= post.description %>
+            
+            <%= link_to "詳細", post_path(id: post.id) %>
+            
+           
+            <p class="topic-text">
+              <%= post.description %>
+            </p>
+            <%= link_to "削除", post_path(id: post.id), method: :delete %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

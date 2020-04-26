@@ -1,14 +1,50 @@
 class PostsController < ApplicationController
   
   def index
+    @posts = Post.all
+  end
+  
+  def show
+    @post = Post.find(params[:id])
   end
   
   def new
     @post = Post.new
   end
   
+  # def edit
+  # end
+  
   def create
+    # binding.pry
+    # @post = Post.new(post_params)
+    # => ActiveRecord::RecordInvalid (Validation failed: User must existが生じてしまう https://gyazo.com/156d8389d6b4e8bb20040ed32a4c17a3  下記以外の書き方はないのか？？ => 以下の用にuser_idにcurrent_user.idを渡せば良い？
+    # @post = Post.new(post_params)
+    # @post.user_id = current_user.id
     
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      #save!とすればレコードの作成・保存に失敗時例外を発生させることでエラーが生じる
+      flash.now[:success] = '投稿に成功しました'
+      redirect_to posts_path
+    else
+      flash.now[:danger] = "投稿に失敗しました"
+      render :new
+    end
+  end
+  
+  # def update
+  # end
+  
+  def destroy
+    @post = Post.find_by(id: params[:id])
+    @post.destroy
+    redirect_to posts_path, success: '投稿を削除しました'
+  end
+  
+  private 
+  def post_params
+    params.require(:post).permit(:image, :gym_name, :grade, :category, :description)
   end
   
 

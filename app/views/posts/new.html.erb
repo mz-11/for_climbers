@@ -3,10 +3,12 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h2 class="text-center title">課題の投稿</h2>
-      
-        <%= form_with model: @topic, local: true do |f| %>
+        
+        
+        <%= form_with model: @post, url: posts_path, local: true do |f| %>
           <div class="form-group">
             <%= f.label :image %>
+            <!--表記をimageではなく、"写真"のようにしたい 第2引数に指定すればできるはずだが上手く行かない…-->
             <%= f.file_field :image, class: 'form-control-file'%>
           </div>
           

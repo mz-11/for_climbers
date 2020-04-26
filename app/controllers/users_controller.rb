@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     # binding.pry #処理を止め値を確認できる pry系gem 
     # @user = User.new(name: params[:user][:name], email: params[:user][:email])
     @user = User.new(user_params)
-    if @user.save
+    if @user.save!
       redirect_to root_path, success: "#{@user.name}さんの登録が完了しました！"
       # noticeが表示されるようにはviewの設定を行う
     else
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   
   private 
   def user_params #passwordの実装にはhas_secure_passwordをモデルに設定する
-  params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
   
   

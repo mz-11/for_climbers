@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(session_params[:password])
       #authenticateメソッドは引数で受け取ったpasswordをハッシュ化してdigestと一致するか調べる
       session[:user_id] = user.id
-      redirect_to root_path, success: "ログインしました"
+      redirect_to posts_path, success: "ログインしました"
     else
       flash.now[:danger] = "ログインできません"
       render :new

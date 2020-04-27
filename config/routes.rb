@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'user_profile/show'
   get 'posts/new'
   get 'sessions/new'
   get 'pages/index'

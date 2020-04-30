@@ -29,6 +29,7 @@ class PostsController < ApplicationController
       redirect_to posts_path
     else
       flash.now[:danger] = "投稿に失敗しました"
+      
       render :new
     end
   end

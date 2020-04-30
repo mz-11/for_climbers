@@ -11,20 +11,14 @@
   </head>
 
   <body>
-    <!--flash用の部分テンプレート:https://pikawaka.com/rails/flash-->
-    <!--flash[:key] = "value" -->
     <% flash.each do |key, value| %> 
-      <div class="alert alert-<%= key %>" role="alert">
-        <!--alert-<%= key %>でbootstrapのデザインがで適用される-->
-        <%= value %>
-      </div>
+      <div class="alert alert-<%= key %> text-primary" role="alert"><%= value %></div>
     <% end %>
 
     <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
       <div class="container">
         <div class="nav navbar-nav navbar-brand">
           <%= link_to "For climbers", root_path %>
-            <!--<span><%= image_tag "logo.png", class: "navbar-brand" %></span>-->
         </div>
         
         <ul class="nav navbar-nav navbar-right">
@@ -40,6 +34,9 @@
             </li>
             <li>
               <%= link_to "Logout", logout_path, method: :delete %>
+            </li>
+            <li>
+              <%= link_to "My Page", user_profile_show_path  %>
             </li>
           <% else %>
             <li>

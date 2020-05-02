@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   
   
   # resoucesメソッドはindex,show,new,create,edit,update,destroyのパターン化されたアクションに関するルーティングを一括設定できる。
-  resources :users, except: [:index] do #ネスト
-    resources :user_profile, except: [:index, :destroy] #現在ログインしているユーザー自身のプロフィールを表示し、ユーザーidを参照する必要がないため、resourceを使用
-  end
+  resources :users, except: [:index]
+  
+  #現在ログインしているユーザー自身のプロフィールを表示し、ユーザーidを参照する必要がないため、resourceを使用
+  resource :profile #, except: [:destroy]
+  
   resources :posts
 end

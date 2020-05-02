@@ -24,7 +24,7 @@
           
           <div class="form-group">
             <%= f.label :category %>
-            <%= f.text_area :category, class: 'form-control'%>
+            <%= f.select :category, [["Power", "Power"], ["Dynamic", "Dynamic"], ["Technical", "Technical"], ["Balance", "Balance"], ["Endurance", "Endurance"]], {class: 'form-control'} %>
           </div>
          
           <div class="form-group">

@@ -13,18 +13,31 @@
             
             
             
+            <h4><%= post.category %></h4>
             
             
-            <%= post.category %>
-            
-            
-            <%= link_to "詳細", post_path(id: post.id) %>
+            <%= link_to "詳細", post_path(id: post.id), class: "btn btn-primary" %>
             
            
             <p class="topic-text">
               <%= post.description %>
             </p>
-            <%= link_to "削除", post_path(id: post.id), method: :delete %>
+            
+            <h4>Self-Evaluation</h4>
+            <div class="self-evaluation-select">
+              <ul class="list-inline">
+                <li><%= link_to "1",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
+                <li><%= link_to "2",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
+                <li><%= link_to "3",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
+                <li><%= link_to "4",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
+                <li><%= link_to "5",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
+              </ul>
+              
+            </div>
+            
+            
+            
+            <%= link_to "削除", post_path(id: post.id), method: :delete, class: "btn btn-primary"%>
           </div>
         </div>
       </div>

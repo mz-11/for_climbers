@@ -9,5 +9,6 @@ class User < ApplicationRecord
    has_secure_password #gem bcryptをインストールすることで使用できる
    
    has_many :posts
-   has_one :user_profile
+   has_one :profile
+   has_many :evaluations
 end

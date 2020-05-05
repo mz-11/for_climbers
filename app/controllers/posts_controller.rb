@@ -41,7 +41,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path, notice: "変更を保存しました！"
+      redirect_to post_path, success: "変更を保存しました！"
     else
       render :edit
       flash[:danger] = "変更に失敗しました"

@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   # ログインしているユーザーを取得する処理は頻繁に行うため、コントローラーやビューから簡単に呼べるようcurrent_userとして定義。さらにhelper_methodしていすることで全てのビューから使えるようにした。
   helper_method :logged_in?
   
+  add_flash_types :success, :info, :warning, :danger
+  # Bootstrapに対応した success info warning danger 4つのキーが使用できる
+  
   private
   def current_user #現在ログインしているuserを返すメソッド
     # https://qiita.com/aiandrox/items/f4215471f40325d69523

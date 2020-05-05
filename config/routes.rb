@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create" #メールアドレスやパスワードのデータをもとにSessionを作成する
   delete "/logout", to: "sessions#destroy"
   
+  post '/evaluations', to: 'evaluations#create'
+  
   
   # resoucesメソッドはindex,show,new,create,edit,update,destroyのパターン化されたアクションに関するルーティングを一括設定できる。
   resources :users, except: [:index]
@@ -21,4 +23,6 @@ Rails.application.routes.draw do
   resource :profile #, except: [:destroy]
   
   resources :posts
+  
+  
 end

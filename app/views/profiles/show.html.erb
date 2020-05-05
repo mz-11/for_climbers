@@ -1,30 +1,56 @@
-<!--My Page-->
-@profile.id
-
 <div class="profile-wrapper">
  
-    <div class="profile-container">
-      <div class="mt-5 mb-3 row">
-        
-        <div class="col-sm-3">
-          <img src="/assets/icon.png" alt="profile_icon" class="pr-5 rounded-circle" style="height:100px;">
-          <%= link_to "プロフィールの編集", new_profile_path %>
-          <%= image_tag @profile.profile_image.url %>
-          <!--<a class="btn btn-primary">プロフィールの編集</a>-->
+    <div class="container">
+      <div class="row">
+        <div class="box1 col-md-4">
+          <div class="">
+            <!--<img src="/assets/icon.png" alt="profile_icon" class="pr-5 rounded-circle" style="height:100px;">-->
+            <img src="https://i.picsum.photos/id/800/200/300.jpg" alt="profile_icon" class="pr-5 .img-circle">
+            
+            <% if current_user.profile != nil %>
+              <%= current_user.profile.profile_image %>
+            <% else %>
+              <%= "icon_image" %>
+            <% end %>
+         
+          <%#= current_user.profile.profile_image.url %>
+          
+            <% if current_user.profile %>
+              <%= link_to "プロフィールの編集", edit_profile_path, class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to "プロフィールの登録", new_profile_path, class: "btn btn-primary" %>
+            <% end %>
+          </div>
         </div>
         
-        <div class="col-sm-9 pl-10">
-          <h3>name</h3>
+        <div class="box2 col-md-8">
+          <h3>User : <%= current_user.name %></h3>
           <h4>Details</h4>
           <ul>
-            <li>height:</li>
-            <li>weight:</li>
-            <li>usually_grade:</li>
+            <li>height: 
+              <% if current_user.profile != nil %>
+                <%= current_user.profile.height %>
+              <% end %> cm </li> <!--ここでのprofileはuserモデルにhas_oneで定義した:profileキー-->
+            <li>weight:
+              <% if current_user.profile != nil %>
+                <%= current_user.profile.weight %>
+              <% end %> kg</li>
+            <li>usually grade: 
+              <% if current_user.profile != nil %>
+                <%= current_user.profile.usually_grade %>
+              <% end %></li>
           </ul> 
+          
         </div>
-        
       </div>
     </div>
+    
+    
+</div>
+
+
+
+
     
     <div class="evaluation-container">
       <div class="row"> 
@@ -42,10 +68,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     
     <script>
-      var power = 80;
+      var power = 30 / 40 * 100;
       var dynamic = 20;
       var balance = 60;
-      var technical = 20;
+      var technical = 90;
       var endulance = 50;
       
       // canvas要素を取得し変数ctxに入力
@@ -56,7 +82,7 @@
         data: {
           labels: ['Power', 'Dynamic', 'Blance', 'Technical', 'Endurance'],
           datasets: [{
-                label: '@profile.name',
+                label: '<%= current_user.name %>',
                 data: [power, dynamic, balance, technical, endulance],
                 backgroundColor: 'RGBA(225,95,150, 0.5)',
                 borderColor: 'RGBA(225,95,150, 1)',

@@ -12,18 +12,22 @@
 
   <body>
     <% flash.each do |key, value| %> 
-      <div class="alert alert-<%= key %> text-primary" role="alert"><%= value %></div>
+      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
     <% end %>
 
-    <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
+    <!--<nav class="navbar navbar-default navbar-fixed-top navbar-transparent">-->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top navbar-transparent navbar-default">
       <div class="container">
-        <div class="nav navbar-nav navbar-brand">
+        <!--<div class="nav navbar-nav navbar-brand">-->
+        <div class="navbar-brand bg-light">
           <%= link_to "For climbers", root_path %>
         </div>
         
+        
         <ul class="nav navbar-nav navbar-right">
+        <!--<ul class="nav navbar-nav">-->
           <% if logged_in? %>
-            <li>
+            <li class="navbar-nav">
               <%= link_to "About", pages_about_path %>
             </li>
             <li>
@@ -55,6 +59,8 @@
         </ul>
       </div>
     </nav>
+    
+    
     
     <!--yieldに他のviewを差し込んで表示-->
     <%= yield %>

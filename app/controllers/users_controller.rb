@@ -7,8 +7,8 @@ class UsersController < ApplicationController
     # binding.pry #処理を止め値を確認できる pry系gem 
     # @user = User.new(name: params[:user][:name], email: params[:user][:email])
     @user = User.new(user_params)
-    if @user.save!
-      redirect_to root_path, success: "#{@user.name}さんの登録が完了しました！"
+    if @user.save
+      redirect_to login_path, success: "#{@user.name}さんの登録が完了しました。こちらよりログインしてください！"
       # noticeが表示されるようにはviewの設定を行う
     else
       flash.now[:danger] = "登録に失敗しました！"

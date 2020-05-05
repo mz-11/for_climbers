@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   # validates :description, presence: true
   
   belongs_to :user
+  has_many :evaluations
   
   mount_uploader :image, ImageUploader
   # carrierwave設定 Imageuploaderとpostモデルに作成したフィールドimage_pathを関連付ける

@@ -5,7 +5,7 @@
         <h2 class="text-center title">プロフィールの編集</h2>
         
         
-        <%= form_with model: @profile, url: profile_path, local: true do |f| %>
+        <%= form_with model: @profile, scope: :profile, url: profile_path, method: :put, local: true do |f| %>
           <div class="form-group">
             <%= f.label :profile_image %>
             <!--表記をimageではなく、"写真"のようにしたい 第2引数に指定すればできるはずだが上手く行かない…-->
@@ -35,4 +35,3 @@
     </div>
   </div>
 </div>
-

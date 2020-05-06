@@ -69,7 +69,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 追加gem
 gem 'jquery-rails'
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 gem 'rename'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'bootstrap', '~> 4.4.1'

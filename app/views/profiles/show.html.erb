@@ -5,10 +5,10 @@
         <div class="box1 col-md-4">
           <div class="">
             <!--<img src="/assets/icon.png" alt="profile_icon" class="pr-5 rounded-circle" style="height:100px;">-->
-            <img src="https://i.picsum.photos/id/800/200/300.jpg" alt="profile_icon" class="pr-5 .img-circle">
+            <!--<img src="https://i.picsum.photos/id/800/200/300.jpg" alt="profile_icon" class="pr-5 .img-circle">-->
             
             <% if current_user.profile != nil %>
-              <%= current_user.profile.profile_image %>
+              <%= image_tag current_user.profile.profile_image.url %>
             <% else %>
               <%= "icon_image" %>
             <% end %>
@@ -16,7 +16,8 @@
           <%#= current_user.profile.profile_image.url %>
           
             <% if current_user.profile %>
-              <%= link_to "プロフィールの編集", edit_profile_path, class: "btn btn-primary" %>
+              <%= link_to "プロフィールの編集", edit_profile_path(user_id: current_user.id), class: "btn btn-primary" %>
+              <!--(user_id: current_user.id)でuser_idを渡す-->
             <% else %>
               <%= link_to "プロフィールの登録", new_profile_path, class: "btn btn-primary" %>
             <% end %>

@@ -28,12 +28,14 @@ class ProfilesController < ApplicationController
   end
   
   def edit
-    @profile = Profile.find_by(id: params[:user_id])
+    # @profile = Profile.find_by(id: params[:user_id]) user_idと同じ値のプロフィールidを検索することになる。
+    @profile = Profile.find_by(user_id: params[:user_id])
   end
   
   
   def update
-    @profile = Profile.find_by(params[:user_id])
+    # @profile = Profile.find_by(params[:user_id])
+    @profile = Profile.find_by(user_id: params[:user_id])
     # binding.pry
     if @profile.update(profile_params)
       redirect_to profile_path, success: "変更を保存しました！"

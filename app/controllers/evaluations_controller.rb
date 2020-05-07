@@ -9,9 +9,9 @@ class EvaluationsController < ApplicationController
     evaluation.post_id = params[:post_id]
 
     if evaluation.save
-      redirect_to posts_path, success: 'お気に入りに登録しました'
+      redirect_to posts_path, success: '評価しました！実力チャートを確認しよう！'
     else
-      redirect_to posts_path, danger: 'お気に入りに登録に失敗しました'
+      redirect_to posts_path, danger: '評価に失敗しました'
     end
   end
 end

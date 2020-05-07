@@ -16,47 +16,54 @@
     <% end %>
 
     <!--<nav class="navbar navbar-default navbar-fixed-top navbar-transparent">-->
-    <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top navbar-transparent navbar-default">
-      <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container border-bottom border-dark">
         <!--<div class="nav navbar-nav navbar-brand">-->
-        <div class="navbar-brand bg-light">
-          <%= link_to "For climbers", root_path %>
+        <div class="navbar-brand">
+          <%= link_to "For climbers", root_path, class: "text-dark" %>
         </div>
         
+        <!--ナビゲーションメニューメニューボタン（ハンバーガーメニュー）-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span> 
+        </button>
         
-        <ul class="nav navbar-nav navbar-right">
-        <!--<ul class="nav navbar-nav">-->
-          <% if logged_in? %>
-            <li class="navbar-nav">
-              <%= link_to "About", pages_about_path %>
-            </li>
-            <li>
-              <%= link_to "投稿一覧", posts_path %>
-            </li>
-            <li>
-              <%= link_to "課題投稿", posts_new_path %>
-            </li>
-            <li>
-              <%= link_to "Logout", logout_path, method: :delete %>
-            </li>
-            <li>
-              <%= link_to "My Page", profile_path  %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to "About", pages_about_path %>
-            </li>
-            <li>
-              <%= link_to "投稿一覧", root_path %>
-            </li>
-            <li>
-              <%= link_to "Sign up", new_user_path %>
-            </li>
-            <li>
-              <%= link_to "Login", login_path %>
-            </li>
-          <% end %>
-        </ul>
+        <div class="collapse navbar-collapse nav justify-content-end" id="menu">
+          <ul class="nav justify-content-end">
+          <!--<ul class="nav navbar-nav">-->
+            <% if logged_in? %>
+              <li class="nav-item">
+                <%= link_to "About", pages_about_path, class: "nav-link text-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "投稿一覧", posts_path, class: "nav-link text-dark" , class: "nav-link text-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "課題投稿", posts_new_path, class: "nav-link text-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Logout", logout_path, method: :delete, class: "nav-link text-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "My Page", profile_path, class: "nav-link text-dark" %>
+              </li class="nav-item">
+            <% else %>  <!-- loginしていないとき -->
+              <li class="nav-item">
+                <%= link_to "About", pages_about_path, class: "nav-link text-dark"%>
+              </li>
+              <li class="nav-item">
+                <%= link_to "投稿一覧", posts_path, class: "nav-link text-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Sign up", new_user_path, class: "nav-link text-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Login", login_path, class: "nav-link text-dark" %>
+              </li>
+            <% end %>
+          </ul>
+          
+        </div>
       </div>
     </nav>
     

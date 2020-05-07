@@ -1,4 +1,4 @@
-<div class="topic-index-wrapper">
+<div class="post-index-wrapper">
   <div class="container">
     <% @posts.each do |post| %>
       <div class="row">
@@ -23,7 +23,7 @@
               <%= post.description %>
             </p>
             
-            <h4>Self-Evaluation</h4>
+            <h6>Self-Evaluation</h6>
             <div class="self-evaluation-select">
               <ul class="list-inline">
                 <li><%= link_to "1",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
@@ -40,7 +40,45 @@
             <%= link_to "削除", post_path(id: post.id), method: :delete, class: "btn btn-primary"%>
           </div>
         </div>
+        
+            
+      
+
+        
+        
+        
       </div>
     <% end %>
   </div>
 </div>
+  
+  
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <% @posts.each do |post| %>
+        <div class="card" style="width: 18rem;">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
+          <div class="card-body">
+            <h5 class="card-title">id:<%= post.id %> <%= post.gym_name + post.grade %></h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">詳細</a>
+            <h4>Self-Evaluation</h4>
+              <div class="self-evaluation-select">
+                <ul class="list-inline">
+                  <li><%= link_to "1",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
+                  <li><%= link_to "2",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
+                  <li><%= link_to "3",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
+                  <li><%= link_to "4",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
+                  <li><%= link_to "5",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
+                </ul>
+              </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      
+      
+    </div>
+  </div>

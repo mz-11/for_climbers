@@ -34,8 +34,8 @@ class ProfilesController < ApplicationController
   
   
   def update
-    # @profile = Profile.find_by(params[:user_id])
-    @profile = Profile.find_by(user_id: params[:user_id])
+    @profile = Profile.find_by(params[:user_id])
+    # @profile = Profile.find_by(user_id: params[:user_id])
     # binding.pry
     if @profile.update(profile_params)
       redirect_to profile_path, success: "変更を保存しました！"

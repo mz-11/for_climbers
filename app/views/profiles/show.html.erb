@@ -2,31 +2,27 @@
  
     <div class="container">
       <div class="row">
-        <div class="box1 col-md-4">
-          <div class="">
-            <!--<img src="/assets/icon.png" alt="profile_icon" class="pr-5 rounded-circle" style="height:100px;">-->
-            <!--<img src="https://i.picsum.photos/id/800/200/300.jpg" alt="profile_icon" class="pr-5 .img-circle">-->
-            
+        <div class="profile-icon col-md-5 bg-warning">
+          <div class="icon-image py-2 mt-3">
             <% if current_user.profile != nil %>
-              <%= image_tag current_user.profile.profile_image.url %>
+              <%= image_tag current_user.profile.profile_image.url, class: "mx-auto d-block img-thumbnail rounded-circle", size: "150x150" %>
             <% else %>
-              <%= "icon_image" %>
+              <%= "プロフィール画像を投稿してください" %>
             <% end %>
-         
-          <%#= current_user.profile.profile_image.url %>
-          
+          </div>
+          <div class="profile-button py-2 text-center border-top border-light">
             <% if current_user.profile %>
               <%= link_to "プロフィールの編集", edit_profile_path(user_id: current_user.id), class: "btn btn-primary" %>
-              <!--(user_id: current_user.id)でuser_idを渡す-->
+              <!--(user_id: current_user.id)でuser_idを渡す--> 
             <% else %>
               <%= link_to "プロフィールの登録", new_profile_path, class: "btn btn-primary" %>
             <% end %>
           </div>
         </div>
         
-        <div class="box2 col-md-8">
-          <h3>User : <%= current_user.name %></h3>
-          <h4>Details</h4>
+        <div class="profile-detail col-md-7 bg-primary p-5">
+          <h4>User : <%= current_user.name %></h4>
+          <h5>Details</h5>
           <ul>
             <li>height: 
               <% if current_user.profile != nil %>
@@ -43,6 +39,14 @@
           </ul> 
           
         </div>
+        
+        <h4 class="col text-center text-secondary my-4">------実力チャート------</h4>
+        
+        
+        
+        
+        
+        
       </div>
     </div>
     
@@ -55,7 +59,7 @@
     
     <div class="evaluation-container">
       <div class="row"> 
-        <h4 class="col">------実力チャート------</h4>
+       
       </div>
     </div>
     
@@ -63,10 +67,11 @@
     
     
      <!--canvas要素：グラフィックなどが描写可能となる-->
-     <canvas id="myRaderChart">Canvas not supported...</canvas>
+    <canvas id="myRaderChart">Canvas not supported...</canvas>
      
     <!--読み込み-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>-->
+    <!--headタグへ書き直した・・・ページ遷移時に上手く読み込めない現象を解消-->
     
     <script>
       var power = 30 / 40 * 100;

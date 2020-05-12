@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   
   resources :posts
   
-  
+
+  post 'evaluations', to: 'evaluations#create'
 end

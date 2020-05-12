@@ -26,11 +26,11 @@
             <h6>Self-Evaluation</h6>
             <div class="self-evaluation-select">
               <ul class="list-inline">
-                <li><%= link_to "1",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
-                <li><%= link_to "2",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
-                <li><%= link_to "3",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
-                <li><%= link_to "4",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
-                <li><%= link_to "5",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
+                <li><%= link_to "1",evaluations_path(post_id: post.id, point: "1", category: post.category), method: :post, class: "btn btn-sm" %></li>
+                <li><%= link_to "2",evaluations_path(post_id: post.id, point: "2", category: post.category), method: :post, class: "btn btn-sm" %></li>
+                <li><%= link_to "3",evaluations_path(post_id: post.id, point: "3", category: post.category), method: :post, class: "btn btn-sm" %></li>
+                <li><%= link_to "4",evaluations_path(post_id: post.id, point: "4", category: post.category), method: :post, class: "btn btn-sm" %></li>
+                <li><%= link_to "5",evaluations_path(post_id: post.id, point: "5", category: post.category), method: :post, class: "btn btn-sm" %></li>
               </ul>
               
             </div>

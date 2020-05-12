@@ -7,7 +7,9 @@ class EvaluationsController < ApplicationController
     evaluation = Evaluation.new
     evaluation.user_id = current_user.id
     evaluation.post_id = params[:post_id]
-
+    evaluation.point = params[:point]
+    evaluation.category = params[:category]
+    
     if evaluation.save
       redirect_to posts_path, success: '評価しました！実力チャートを確認しよう！'
     else

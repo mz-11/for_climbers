@@ -11,4 +11,5 @@ class User < ApplicationRecord
    has_many :posts
    has_one :profile
    has_many :evaluations
+   has_many :evaluation_posts, through: :evaluations, source: :post
 end

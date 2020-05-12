@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
     # @profile = Profile.find_by(params[:user_id])
     # @profile = Profile.find_by(id: params[:id])
     #current_userに関連付けしているため、ここは書かなくて良い。 ルーティングがresourceなのもcurrent_userのみで値を引き出せるため。
+    @evaluation_posts = current_user.evaluation_posts
   end
   
   def new

@@ -8,8 +8,11 @@ class User < ApplicationRecord
   
    has_secure_password #gem bcryptをインストールすることで使用できる
    
-   has_many :posts
+   has_many :posts, dependent: :destroy
    has_one :profile
    has_many :evaluations
    has_many :evaluation_posts, through: :evaluations, source: :post
+   # throughオプションによりevaluations経由でpostを取得
+   # sourceオプションでevaluation.rbで設定しているbelongs_to :postを参照する。これによりuser.evaluation_postsと書けばuserが評価した投稿を一気に取得できる
+   # オプションはアソシエーションの名前を外部キーの名前から外れた名前にする場合に設定する
 end

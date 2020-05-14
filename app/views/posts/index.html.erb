@@ -1,16 +1,16 @@
 <div class="post-index-wrapper">
   <div class="container">
-    <% @posts.each do |post| %>
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+    <div class="row">
+      <% @posts.each do |post| %>
+      <%# evaluation_posts.each do |post| %>
+        <div class="col-lg-4">
           <div class="topic-index-single">
             <h2 class="topic-author">
               <%= post.user.name %>
             </h2>
             
-            <h4>id:<%= post.id %> <%= post.gym_name + post.grade %></h4>
+            <h5>id:<%= post.id %> <%= post.gym_name + post.grade %></h5>
             <%= image_tag post.image.url %>
-            
             
             
             <h4><%= post.category %></h4>
@@ -25,18 +25,59 @@
             
             <h6>Self-Evaluation</h6>
             <div class="self-evaluation-select">
-              <ul class="list-inline">
-                <li><%= link_to "1",evaluations_path(post_id: post.id, point: "1", category: post.category), method: :post, class: "btn btn-sm" %></li>
-                <li><%= link_to "2",evaluations_path(post_id: post.id, point: "2", category: post.category), method: :post, class: "btn btn-sm" %></li>
-                <li><%= link_to "3",evaluations_path(post_id: post.id, point: "3", category: post.category), method: :post, class: "btn btn-sm" %></li>
-                <li><%= link_to "4",evaluations_path(post_id: post.id, point: "4", category: post.category), method: :post, class: "btn btn-sm" %></li>
-                <li><%= link_to "5",evaluations_path(post_id: post.id, point: "5", category: post.category), method: :post, class: "btn btn-sm" %></li>
-              </ul>
-              
+              <% if !post.evaluation_users.include?(current_user) %> <!--評価の有無で評価ボタンの表示を変える条件分岐-->
+                <ul class="list-inline">
+                  <li class="list-inline-item"><%= link_to "1",evaluations_path(post_id: post.id, point: "1", category: post.category), method: :post, class: "btn btn-sm btn-info " %></li>
+                  <li class="list-inline-item"><%= link_to "2",evaluations_path(post_id: post.id, point: "2", category: post.category), method: :post, class: "btn btn-sm btn-info" %></li>
+                  <li class="list-inline-item"><%= link_to "3",evaluations_path(post_id: post.id, point: "3", category: post.category), method: :post, class: "btn btn-sm btn-info" %></li>
+                  <li class="list-inline-item"><%= link_to "4",evaluations_path(post_id: post.id, point: "4", category: post.category), method: :post, class: "btn btn-sm btn-info" %></li>
+                  <li class="list-inline-item"><%= link_to "5",evaluations_path(post_id: post.id, point: "5", category: post.category), method: :post, class: "btn btn-sm btn-info" %></li>
+                </ul>
+              <% else %>
+                <ul class="list-inline">
+                  <li class="list-inline-item"><%= link_to "1",evaluation_path(id: "1", post_id: post.id, point: "1", category: post.category), method: :put, class: "btn btn-sm btn-primary" %></li>
+                  <li class="list-inline-item"><%= link_to "2",evaluation_path(id: "1", post_id: post.id, point: "2", category: post.category), method: :put, class: "btn btn-sm btn-primary" %></li>
+                  <li class="list-inline-item"><%= link_to "3",evaluation_path(id: "1", post_id: post.id, point: "3", category: post.category), method: :put, class: "btn btn-sm btn-primary" %></li>
+                  <li class="list-inline-item"><%= link_to "4",evaluation_path(id: "1", post_id: post.id, point: "4", category: post.category), method: :put, class: "btn btn-sm btn-primary" %></li>
+                  <li class="list-inline-item"><%= link_to "5",evaluation_path(id: "1", post_id: post.id, point: "5", category: post.category), method: :post, class: "btn btn-sm btn-primary" %></li>
+                  <li class="list-inline-item"><%= link_to "評価をリセット",evaluation_path(id: "20",post_id: post.id, point: "5", category: post.category), method: :delete, class: "btn btn-sm btn-danger mt-1" %></li>
+                </ul>
+              <% end %>
             </div>
             
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="option1" autocomplete="off"> 1
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> 2
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> 3
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> 4
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> 5
+              </label>
+            </div>
             
-            
+            <!--form_with radio_button-->
+            <%#= form_with model: @evaluations, scope: evaluations, url: evaluations/path, local: true do |f| %>
+            <!--  <div class="form-group">-->
+                <%#= f.label :point, "1" %>
+                <%#= f.radio_button :point, 1 %>
+            <!--  </div>-->
+            <!--  <div class="form-group">-->
+                <%#= f.label :point, "2" %>
+                <%#= f.radio_button :point, 2 %>
+            <!--  </div>-->
+             
+    
+              <%#= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+            <%# end %>
+        
             <%= link_to "削除", post_path(id: post.id), method: :delete, class: "btn btn-primary"%>
           </div>
         </div>
@@ -47,38 +88,40 @@
         
         
         
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
   
   
   
   <div class="container">
-    <div class="row">
-      <div class="col-md-3">
+    
+      <div class="row">
         <% @posts.each do |post| %>
-        <div class="card" style="width: 18rem;">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-          <div class="card-body">
-            <h5 class="card-title">id:<%= post.id %> <%= post.gym_name + post.grade %></h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">詳細</a>
-            <h4>Self-Evaluation</h4>
-              <div class="self-evaluation-select">
-                <ul class="list-inline">
-                  <li><%= link_to "1",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
-                  <li><%= link_to "2",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
-                  <li><%= link_to "3",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
-                  <li><%= link_to "4",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
-                  <li><%= link_to "5",evaluations_path(post_id: post.id), method: :post, class: "btn btn-sm" %></li>
-                </ul>
-              </div>
+        <div class="col-md-4">
+          
+          <div class="card" style="width: 18rem;">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
+            <div class="card-body">
+              <h5 class="card-title">id:<%= post.id %> <%= post.gym_name + post.grade %></h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">詳細</a>
+              <h4>Self-Evaluation</h4>
+                <div class="self-evaluation-select">
+                  <ul class="list-inline">
+                  <li class="list-inline-item"><%= link_to "1",evaluations_path(post_id: post.id, point: "1", category: post.category), method: :post, class: "btn btn-sm btn-info " %></li>
+                  <li class="list-inline-item"><%= link_to "2",evaluations_path(post_id: post.id, point: "2", category: post.category), method: :post, class: "btn btn-sm btn-info" %></li>
+                  <li class="list-inline-item"><%= link_to "3",evaluations_path(post_id: post.id, point: "3", category: post.category), method: :post, class: "btn btn-sm btn-info" %></li>
+                  <li class="list-inline-item"><%= link_to "4",evaluations_path(post_id: post.id, point: "4", category: post.category), method: :post, class: "btn btn-sm btn-info" %></li>
+                  <li class="list-inline-item"><%= link_to "5",evaluations_path(post_id: post.id, point: "5", category: post.category), method: :post, class: "btn btn-sm btn-info" %></li>
+                </div>
+            </div>
           </div>
         </div>
         <% end %>
       </div>
       
       
-    </div>
+   
   </div>

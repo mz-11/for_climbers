@@ -25,5 +25,7 @@ Rails.application.routes.draw do
   resources :posts
   
 
-  post 'evaluations', to: 'evaluations#create'
+  # post 'evaluations', to: 'evaluations#create'
+  # put 'evaluations', to: 'evaluations#update'
+  resources :evaluations, only: [:create, :update, :destroy]
 end

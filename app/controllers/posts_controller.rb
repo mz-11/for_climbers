@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
   
   def index
-    @posts = Post.all
+    @posts = Post.all.includes(:evaluation_users)
+    # eachのループ処理による「N＋１問題」を防ぐためにincludesを使用。includesは指定したモデルのデータを一括で取得しキャッシュできる。
+    
   end
   
   def show

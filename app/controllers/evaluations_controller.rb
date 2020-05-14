@@ -16,4 +16,23 @@ class EvaluationsController < ApplicationController
       redirect_to posts_path, danger: '評価に失敗しました'
     end
   end
+  
+  def update
+    @evaluation = Evaluation.find_by(post_id: params[:post_id])
+    
+    if @evaluation.update(point: params[:point])
+      redirect_to post_path, success: "評価を変更しました！"
+    else
+      render "/posts"
+      flash[:danger] = "変更に失敗しました"
+    end
+  end
+  
+  def destroy
+    @evaluation = Evaluation.find(params[:id])
+    @evaluation.destroy
+    # binding.pry
+    redirect_to posts_path, success: "評価を取り消しました"
+  end
+  
 end

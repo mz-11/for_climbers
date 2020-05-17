@@ -18,13 +18,12 @@ class EvaluationsController < ApplicationController
   end
   
   def update
-    @evaluation = Evaluation.find_by(post_id: params[:post_id])
-    
+    @evaluation = Evaluation.find(params[:id])
     if @evaluation.update(point: params[:point])
-      redirect_to post_path, success: "評価を変更しました！"
+      redirect_to posts_path, success: "評価を変更しました！"
     else
       render "/posts"
-      flash[:danger] = "変更に失敗しました"
+      flash.now[:danger] = "変更に失敗しました"
     end
   end
   

@@ -7,7 +7,8 @@
             <% if current_user.profile != nil %>
               <%= image_tag current_user.profile.profile_image.url, class: "mx-auto d-block img-thumbnail rounded-circle", size: "150x150" %>
             <% else %>
-              <%= "プロフィール画像を投稿してください" %>
+              <div class="text-center text-light bg-secondary" style="height: 150px;", "width: 150px;"><%= "プロフィール画像を投稿してください" %></div>
+             
             <% end %>
           </div>
           <div class="profile-button py-2 text-center border-top border-light">

@@ -164,3 +164,21 @@
 
 
 // }
+
+.jumbotron {
+  background-image: url("top2.jpg");
+  width: 100vw;
+  
+  // background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+// .title {
+//   background-color: rgba(0, 0, 0, 0.5);
+// }
+
+.post-index-wrapper {
+  background-color: #dcdcdc;
+}

@@ -1,0 +1,20 @@
+/* SQLでやること */
+
+1.user_id = current_user.idであること
+2.各カテゴリーの評価件数を取得
+3.各カテゴリーの得点合計
+  - カテゴリーの得点合計を取得し、件数を掛ける
+4.得点合計を評価件数で割り、カテゴリーごとの得点平均値を求める
+
+評価件数evaluation_numberの取得(category:powerの場合)
+SELECT COUNT(category) FROM evaluations WHERE user_id = "　" AND category = "power" 
+
+evaluation_number = Evaluation.where(category="")
+
+
+得点合計を取得(category:powerの場合)
+方法1
+SELECT SUM(point) FROM evaluations WHERE user_id = "　" AND category = "power"
+
+方法2 categoryごとの合計を求める
+SELECT category,SUM(point) FROM evaluations WHERE user_id = "　" GROUP BY category;

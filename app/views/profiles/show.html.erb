@@ -2,12 +2,12 @@
  
     <div class="container">
       <div class="row">
-        <div class="profile-icon col-md-5 bg-warning">
+        <div class="profile-icon col-md-5">
           <div class="icon-image py-2 mt-3">
             <% if current_user.profile != nil %>
               <%= image_tag current_user.profile.profile_image.url, class: "mx-auto d-block img-thumbnail rounded-circle", size: "150x150" %>
             <% else %>
-              <div class="text-center text-light bg-secondary" style="height: 150px;", "width: 150px;"><%= "プロフィール画像を投稿してください" %></div>
+              <div class="text-center text-dark" style="height: 150px;", "width: 150px;"><%= "プロフィール画像を投稿してください" %></div>
              
             <% end %>
           </div>
@@ -21,7 +21,7 @@
           </div>
         </div>
         
-        <div class="profile-detail col-md-7 bg-primary p-5">
+        <div class="profile-detail col-md-7 p-5">
           <h4>User : <%= current_user.name %></h4>
           <h5>Details</h5>
           <ul>
@@ -41,13 +41,52 @@
           
         </div>
         
-        <h4 class="col text-center text-secondary my-4">------実力チャート------</h4>
+        
+        <div class="col-md-12">
+          <h4 class="col text-center text-secondary my-4">------実力チャート------</h4>
+        </div>
+        
+           
+             <div class="col-md-4">
+              <h6>評価件数</h6>
+                <ul>
+                  <li>power:<%= @power.count %></li>
+                  <li>dynamic:<%= @dynamic.count %></li>
+                  <li>balance:<%= @balance.count %></li>
+                  <li>move:<%= @move.count %></li>
+                  <li>endulance:<%= @endurance.count %></li>
+                </ul>
+             </div>
+             <div class="col-md-4">
+               <h6>カテゴリー別得点</h6> 
+                 <ul>
+                  <li>power:<%= @power_sum %></li>
+                  <li>dynamic:<%= @dynamic_sum %></li>
+                  <li>balance:<%= @balance_sum %></li>
+                  <li>move:<%= @move_sum %></li>
+                  <li>endulance:<%= @endurance_sum %></li>
+                </ul>
+             </div>
+             <div class="col-md-4">
+               <h6>カテゴリー別平均値</h6> 
+                 <ul>
+                  <li>power:<%= @power_ave %></li>
+                  <li>dynamic:<%= @dynamic_ave %></li>
+                  <li>balance:<%= @balance_ave %></li>
+                  <li>move:<%= @move_ave %></li>
+                  <li>endulance:<%= @endurance_ave%></li>
+                </ul>
+             </div>
+  
+          
+          
+          
+          
+            
         
         
-        
-        
-        
-        
+       
+        </ul>
       </div>
     </div>
     
@@ -62,9 +101,7 @@
       <div class="row"> 
        
       </div>
-    </div>
-    
-    
+    </div
     
     
      <!--canvas要素：グラフィックなどが描写可能となる-->
@@ -75,11 +112,11 @@
     <!--headタグへ書き直した・・・ページ遷移時に上手く読み込めない現象を解消-->
     
     <script>
-      var power = 30 / 40 * 100;
-      var dynamic = 20;
-      var balance = 60;
-      var technical = 90;
-      var endulance = 50;
+      var power = <%= @power_ave %> / 5 * 100;
+      var dynamic = <%= @dynamic_ave %> / 5 * 100;
+      var balance = <%= @balance_ave %> / 5 * 100;
+      var move = <%= @move_ave %> / 5 * 100;
+      var endulance = <%= @endurance_ave %> / 5 * 100;
       
       // canvas要素を取得し変数ctxに入力
       var ctx = document.getElementById("myRaderChart");
@@ -90,7 +127,7 @@
           labels: ['Power', 'Dynamic', 'Blance', 'Technical', 'Endurance'],
           datasets: [{
                 label: '<%= current_user.name %>',
-                data: [power, dynamic, balance, technical, endulance],
+                data: [power, dynamic, balance, move, endulance],
                 backgroundColor: 'RGBA(225,95,150, 0.5)',
                 borderColor: 'RGBA(225,95,150, 1)',
                 borderWidth: 1,

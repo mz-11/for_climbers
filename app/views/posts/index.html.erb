@@ -5,25 +5,23 @@
       
       <%# evaluation_posts.each do |post| %>
         <div class="col-lg-4">
-          <div class="post-index-single bg-light my-2 p-3 border-dark rounded">
-            <p class="post-author">投稿者： <%= post.user.name %></p>
-            <p>(id:<%= post.id %>)</p>
-            <p class="title">課題名：<%= post.gym_name + " " + post.grade %></p>
-            <p class="category">カテゴリー：<%= post.category %></p>
-           
+          <div class="post-index-single bg-light my-2 p-4 border-dark rounded">
+            <div class="post-datail">
+              <p class="post-author">投稿者： <%= post.user.name %></p>
+              <p>(id:<%= post.id %>)</p>
+              <p class="title">課題名：<%= post.gym_name + " " + post.grade %></p>
+              <p class="category">カテゴリー：<%= post.category %></p>
+              <!--<p class="post-text">-->
+              <%#= post.description %>
+            <!--</p>-->
+            </div>
             <!--投稿イメージ-->
             <div class="post-image text-center">
-              <%= link_to image_tag(post.image.url, size:""), post_path(id: post.id) %>
+              <%= link_to image_tag(post.image.url, class:"img"), post_path(id: post.id) %>
             </div>
-           
-            <p class="post-text">
-              <%#= post.description %>
-            </p>
             
-            <h6>Self-Evaluation</h6>
             <div class="self-evaluation-select">
-              
-              
+              <h6>Self-Evaluation</h6>
               <% if !post.evaluation_users.include?(current_user) %> <!--評価の有無で評価ボタンの表示を変える条件分岐-->
                 <ul class="list-inline">
                   <li class="list-inline-item"><%= link_to "1",evaluations_path(post_id: post.id, point: "1", category: post.category), method: :post, class: "btn btn-sm btn-outline-info" %></li>
@@ -33,18 +31,44 @@
                   <li class="list-inline-item"><%= link_to "5",evaluations_path(post_id: post.id, point: "5", category: post.category), method: :post, class: "btn btn-sm btn-outline-info" %></li>
                 </ul>
               <% else %>
-                <% @evaluations.each do |evaluation| %>
+              
+                <% @evaluations.each do |evaluation| %><!-- user_idがcurrent_user_idのevaluationをeachで展開 -->
                   <% if post.id ==  evaluation.post_id %>
                     <ul class="list-inline">
-                      <%# binding.pry %>
-                      <li class="list-inline-item"><%= link_to "1",evaluation_path(id: evaluation.id, post_id: post.id, point: "1"), method: :put, class: "btn btn-sm btn-info" %></li>
-                      <li class="list-inline-item"><%= link_to "2",evaluation_path(id: evaluation.id, post_id: post.id, point: "2"), method: :put, class: "btn btn-sm btn-info" %></li>
-                      <li class="list-inline-item"><%= link_to "3",evaluation_path(id: evaluation.id, post_id: post.id, point: "3"), method: :put, class: "btn btn-sm btn-info" %></li> 
-                      <li class="list-inline-item"><%= link_to "4",evaluation_path(id: evaluation.id, post_id: post.id, point: "4"), method: :put, class: "btn btn-sm btn-info" %></li>
-                      <li class="list-inline-item"><%= link_to "5",evaluation_path(id: evaluation.id, post_id: post.id, point: "5"), method: :put, class: "btn btn-sm btn-info" %></li>
+                      <% if evaluation.point == 1 %> <!-- ボタン表示の切替-->
+                        <li class="list-inline-item"><%= link_to "1",evaluation_path(id: evaluation.id, post_id: post.id, point: "1"), method: :put, class: "btn btn-sm btn-info" %></li>
+                      <% else %>
+                        <li class="list-inline-item"><%= link_to "1",evaluation_path(id: evaluation.id, post_id: post.id, point: "1"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
+                      <% end %>
+                      
+                      <% if evaluation.point == 2 %> <!-- ボタン表示の切替-->
+                        <li class="list-inline-item"><%= link_to "2",evaluation_path(id: evaluation.id, post_id: post.id, point: "2"), method: :put, class: "btn btn-sm btn-info" %></li>
+                      <% else %>
+                        <li class="list-inline-item"><%= link_to "2",evaluation_path(id: evaluation.id, post_id: post.id, point: "2"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
+                      <% end %>
+                      
+                      <% if evaluation.point == 3 %> <!-- ボタン表示の切替-->
+                        <li class="list-inline-item"><%= link_to "3",evaluation_path(id: evaluation.id, post_id: post.id, point: "3"), method: :put, class: "btn btn-sm btn-info" %></li>
+                      <% else %>
+                        <li class="list-inline-item"><%= link_to "3",evaluation_path(id: evaluation.id, post_id: post.id, point: "3"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
+                      <% end %>
+                      
+                      
+                      <% if evaluation.point == 4 %> <!-- ボタン表示の切替-->
+                        <li class="list-inline-item"><%= link_to "4",evaluation_path(id: evaluation.id, post_id: post.id, point: "4"), method: :put, class: "btn btn-sm btn-info" %></li>
+                      <% else %>
+                        <li class="list-inline-item"><%= link_to "4",evaluation_path(id: evaluation.id, post_id: post.id, point: "4"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
+                      <% end %>
+                      
+                      
+                      <% if evaluation.point == 5 %> <!-- ボタン表示の切替-->
+                        <li class="list-inline-item"><%= link_to "5",evaluation_path(id: evaluation.id, post_id: post.id, point: "5"), method: :put, class: "btn btn-sm btn-info" %></li>
+                      <% else %>
+                        <li class="list-inline-item"><%= link_to "5",evaluation_path(id: evaluation.id, post_id: post.id, point: "5"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
+                      <% end %>
                       
                       <!--評価ボタン-->
-                      <li class="list-inline-item"><%= link_to "評価をリセット",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-outline-warning mt-1" %></li>
+                        <li class="list-inline-item"><%= link_to "評価リセット",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-outline-warning mt-1" %></li>
                     </ul>
                   <% end %>
                 <% end %>
@@ -53,37 +77,23 @@
             
 
             
-            <div class="btn-group-sm btn-group-toggle " data-toggle="buttons">
-              <label class="btn btn-secondary active">
-                <input type="radio" name="options" id="option1" checked>1
+            <!--<div class="btn-group-sm btn-group-toggle " data-toggle="buttons">-->
+            <!--  <label class="btn btn-secondary active">-->
+            <!--    <input type="radio" name="options" id="option1" checked>1-->
                 
-              </label>
-              <label class="btn btn-secondary btn ">
-                <input type="radio" name="options" id="option2">2
+            <!--  </label>-->
+            <!--  <label class="btn btn-secondary btn ">-->
+            <!--    <input type="radio" name="options" id="option2">2-->
                 
-              </label>
-              <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3"> 3
-              </label>
-              <p>（↑理想のボタンイメージ）</p>
-            </div>
+            <!--  </label>-->
+            <!--  <label class="btn btn-secondary">-->
+            <!--    <input type="radio" name="options" id="option3"> 3-->
+            <!--  </label>-->
+            <!--  <p>（↑理想のボタンイメージ）</p>-->
+            <!--</div>-->
             
-            <!--form_with radio_button-->
-            <%#= form_with model: @evaluations, scope: evaluations, url: evaluations/path, local: true do |f| %>
-            <!--  <div class="form-group">-->
-                <%#= f.label :point, "1" %>
-                <%#= f.radio_button :point, 1 %>
-            <!--  </div>-->
-            <!--  <div class="form-group">-->
-                <%#= f.label :point, "2" %>
-                <%#= f.radio_button :point, 2 %>
-            <!--  </div>-->
-             
-    
-              <%#= f.submit '投稿', class: 'btn btn-primary btn-block' %>
-            <%# end %>
         
-            <%= link_to "投稿削除", post_path(id: post.id), method: :delete, class: "btn btn-primary"%>
+            <%= link_to "投稿削除(※後で消す)", post_path(id: post.id), method: :delete, class: "btn btn-primary"%>
           </div>
         </div>
       <% end %>

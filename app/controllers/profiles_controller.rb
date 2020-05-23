@@ -6,9 +6,12 @@ class ProfilesController < ApplicationController
     # @profile = Profile.find_by(id: params[:id])
     #current_userに関連付けしているため、ここは書かなくて良い。 ルーティングがresourceなのもcurrent_userのみで値を引き出せるため。
     
-    # @evaluation_hoge = Evaluation.new
-    # @category_point = Evaluation.select("category, sum(point)").group("category")
+    @posts = Post.all.includes(:evaluation_users) #評価した投稿一覧用
     
+
+    
+    # group byを使ってまとめて取得したほうが良いのか？
+    # @category_point = Evaluation.select("category, sum(point)").group("category")
     # @category_groups = evaluation_posts.select("category, sum(point)").group("category")
     
     # @number_of_categories = .where("category = power", params[:category]).count
@@ -25,21 +28,23 @@ class ProfilesController < ApplicationController
     # @balance_sum = @balance.all.sum(:point)
     # @move_sum = @move.all.sum(:point)
     # @endurance_sum = @endurance.all.sum(:point)
-    
-    # # @power_ave = @power_sum / @power.count
-    # @dynamic_ave = @dynamic_sum / @dynamic.count
-    # # @blance_ave = @blance_sum / @blance.count
-    # @move_ave = @move_sum / @move.count
-    # @endurance_ave = @endurance_sum / @endurance.count
-    
-    
-    
-    
+
     @power_ave = @power.average(:point).round(1)
     @dynamic_ave = @dynamic.average(:point).round(1)
     @balance_ave = @balance.average(:point).round(1)
     @move_ave = @move.average(:point).round(1)
     @endurance_ave = @endurance.average(:point).round(1)
+    
+    
+    # @power = get_ave_and_calc_ratio(current_user.id, "Power")
+    
+    @power = Evaluation.search(current_user.id, "Power").average(:point) / 5 * 100
+    @dynamic = Evaluation.search(current_user.id, "Dynamic").average(:point) / 5 * 100
+    @balance = Evaluation.search(current_user.id, "Balance").average(:point) / 5 * 100
+    @move = Evaluation.search(current_user.id, "Move").average(:point) / 5 * 100
+    @endurance = Evaluation.search(current_user.id, "Endurance").average(:point) / 5 * 100
+  
+  
 
   end
   

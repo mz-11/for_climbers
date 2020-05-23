@@ -32,24 +32,27 @@ class Evaluation < ApplicationRecord
   
   # def number_of_categories
   #   Evaluation.where("category = ?",params[:category]).count
-    
-  # end
-
-  
-  # def hoge
-  #   if self.user_id == current_user.id
-  #     return "hoge"
-  #   else
-  #     return "hogehoge"
-  #   end
   # end
   
-  def a_b(a,b) #テスト用 => 成功
-    a * b
-  end
+  # def a_b(a,b) #テスト用 => 成功
+  #   a * b
+  # end
+  
+  #指定されたユーザーidとカテゴリーを検索し、pointの平均値を算出。その後平均値を％表示に変換するメソッド
+  def get_ave_and_calc_ratio(a,b)
+    c_point = Evaluation.where("user_id = ? and category = ?", "a", "b").average(:point) #スコープとして
+    c_point / 5 * 100 #コントローラに
+  end  
 
+
+  scope :search, -> (a,b) {where("user_id = ? and category = ?", a,b)}
+  # scope :search, -> (a,b) {where("user_id = ? and category = ?", params[:a], params[:b])}
+  # scope :search, -> {where("user_id = ? and category = ?", params[:user_id], params[:category])}
+  # scope :search, -> (a) {where("user_id = ?", a)}
   
   
+  # scope :search, -> {where(id: 23)}
+  # scope :search, -> {where("user_id = ? and post_id = ?", 22, 39)}
   
 end
 

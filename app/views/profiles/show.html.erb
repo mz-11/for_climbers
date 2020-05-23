@@ -1,170 +1,168 @@
 <div class="profile-wrapper">
- 
-    <div class="container">
-      <div class="row">
-        <div class="profile-icon col-md-5">
-          <div class="icon-image py-2 mt-3">
-            <% if current_user.profile != nil %>
-              <%= image_tag current_user.profile.profile_image.url, class: "mx-auto d-block img-thumbnail rounded-circle", size: "150x150" %>
-            <% else %>
-              <div class="text-center text-dark" style="height: 150px;", "width: 150px;"><%= "プロフィール画像を投稿してください" %></div>
-             
-            <% end %>
-          </div>
-          <div class="profile-button py-2 text-center border-top border-light">
-            <% if current_user.profile %>
-              <%= link_to "プロフィールの編集", edit_profile_path(user_id: current_user.id), class: "btn btn-primary" %>
-              <!--(user_id: current_user.id)でuser_idを渡す--> 
-            <% else %>
-              <%= link_to "プロフィールの登録", new_profile_path, class: "btn btn-primary" %>
-            <% end %>
-          </div>
-        </div>
-        
-        <div class="profile-detail col-md-7 p-5">
-          <h4>User : <%= current_user.name %></h4>
-          <h5>Details</h5>
-          <ul>
-            <li>height: 
-              <% if current_user.profile != nil %>
-                <%= current_user.profile.height %>
-              <% end %> cm </li> <!--ここでのprofileはuserモデルにhas_oneで定義した:profileキー-->
-            <li>weight:
-              <% if current_user.profile != nil %>
-                <%= current_user.profile.weight %>
-              <% end %> kg</li>
-            <li>usually grade: 
-              <% if current_user.profile != nil %>
-                <%= current_user.profile.usually_grade %>
-              <% end %></li>
-          </ul> 
-          
-        </div>
-        
-        
-        <div class="col-md-12">
-          <h4 class="col text-center text-secondary my-4">------実力チャート------</h4>
-        </div>
-        
-           
-             <div class="col-md-4">
-              <h6>評価件数</h6>
-                <ul>
-                  <li>power:<%= @power.count %></li>
-                  <li>dynamic:<%= @dynamic.count %></li>
-                  <li>balance:<%= @balance.count %></li>
-                  <li>move:<%= @move.count %></li>
-                  <li>endulance:<%= @endurance.count %></li>
-                </ul>
-             </div>
-             <div class="col-md-4">
-               <h6>カテゴリー別得点</h6> 
-                 <ul>
-                  <li>power:<%= @power_sum %></li>
-                  <li>dynamic:<%= @dynamic_sum %></li>
-                  <li>balance:<%= @balance_sum %></li>
-                  <li>move:<%= @move_sum %></li>
-                  <li>endulance:<%= @endurance_sum %></li>
-                </ul>
-             </div>
-             <div class="col-md-4">
-               <h6>カテゴリー別平均値</h6> 
-                 <ul>
-                  <li>power:<%= @power_ave %></li>
-                  <li>dynamic:<%= @dynamic_ave %></li>
-                  <li>balance:<%= @balance_ave %></li>
-                  <li>move:<%= @move_ave %></li>
-                  <li>endulance:<%= @endurance_ave%></li>
-                </ul>
-             </div>
-  
-          
-          
-          
-          
-            
-        
-        
-       
-        </ul>
-      </div>
-    </div>
-    
-    
-</div>
-
-
-
-
-    
-    <div class="evaluation-container">
-      <div class="row"> 
-       
-      </div>
-    </div
-    
-    
-     <!--canvas要素：グラフィックなどが描写可能となる-->
-    <canvas id="myRaderChart">Canvas not supported...</canvas>
-     
-    <!--読み込み-->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>-->
-    <!--headタグへ書き直した・・・ページ遷移時に上手く読み込めない現象を解消-->
-    
-    <script>
-      var power = <%= @power_ave %> / 5 * 100;
-      var dynamic = <%= @dynamic_ave %> / 5 * 100;
-      var balance = <%= @balance_ave %> / 5 * 100;
-      var move = <%= @move_ave %> / 5 * 100;
-      var endulance = <%= @endurance_ave %> / 5 * 100;
+  <div class="container profile-detail">
+    <div class="row">
       
-      // canvas要素を取得し変数ctxに入力
-      var ctx = document.getElementById("myRaderChart");
-      // チャート設定
-      var myRaderChart = new Chart(ctx, {
-        type: 'radar',
-        data: {
-          labels: ['Power', 'Dynamic', 'Blance', 'Technical', 'Endurance'],
-          datasets: [{
-                label: '<%= current_user.name %>',
-                data: [power, dynamic, balance, move, endulance],
-                backgroundColor: 'RGBA(225,95,150, 0.5)',
-                borderColor: 'RGBA(225,95,150, 1)',
-                borderWidth: 1,
-                pointBackgroundColor: 'RGB(30,106,177)'
-                
-            // いずれ平均値も表示？
-            // }, {
-            //     label: 'Bさん',
-            //     data: [73, 95, 80, 87, 79],
-            //     backgroundColor: 'RGBA(115,255,25, 0.5)',
-            //     borderColor: 'RGBA(115,255,25, 1)',
-            //     borderWidth: 1,
-            //     pointBackgroundColor: 'RGB(46,106,177)'
-            
-            }]
-          },
-          options: {
-              title: {
-                  display: false,
-                  text: '実力チャート'
+      <div class="profile-icon col-md-5">
+        <div class="icon-image py-2 mt-3">
+          <% if current_user.profile != nil %>
+            <%= image_tag current_user.profile.profile_image.url, class: "mx-auto d-block img-thumbnail rounded-circle", size: "150x150" %>
+          <% else %>
+            <div class="text-center text-dark" style="height: 150px;", "width: 150px;"><%= "プロフィール画像を投稿してください" %></div>
+          <% end %>
+        </div>
+        <div class="profile-button py-2 text-center">
+          <% if current_user.profile %>
+            <%= link_to "プロフィールの編集", edit_profile_path(user_id: current_user.id), class: "btn btn-primary" %>
+            <!--(user_id: current_user.id)でuser_idを渡す--> 
+          <% else %>
+            <%= link_to "プロフィールの登録", new_profile_path, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="profile-detail col-md-7 p-5">
+        <h4>User : <%= current_user.name %></h4>
+        <h5>Details</h5>
+        <ul>
+          <li>height: 
+            <% if current_user.profile != nil %>
+              <%= current_user.profile.height %>
+            <% end %> cm </li> <!--ここでのprofileはuserモデルにhas_oneで定義した:profileキー-->
+          <li>weight:
+            <% if current_user.profile != nil %>
+              <%= current_user.profile.weight %>
+            <% end %> kg</li>
+          <li>usually grade: 
+            <% if current_user.profile != nil %>
+              <%= current_user.profile.usually_grade %>
+            <% end %></li>
+        </ul> 
+      </div>
+      
+    </div>
+  </div>
+  
+  <main class="container chart-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="col text-center text-secondary my-4">------実力チャート------</h4>
+      </div>
+      
+      <div class="evaluation-details col-md-2">
+        <div class="number">
+          <h6>評価件数</h6>
+          <ul>
+            <li>power:<%#= @power.count %></li>
+            <li>dynamic:<%#= @dynamic.count %></li>
+            <li>balance:<%#= @balance.count %></li>
+            <li>move:<%#= @move.count %></li>
+            <li>endulance:<%#= @endurance.count %></li>
+          </ul>
+        </div>
+        <div class="average">
+           <h6>カテゴリー別平均値</h6> 
+           <ul>
+            <li>power:<%= @power_ave %></li>
+            <li>dynamic:<%= @dynamic_ave %></li>
+            <li>balance:<%= @balance_ave %></li>
+            <li>move:<%= @move_ave %></li>
+            <li>endulance:<%= @endurance_ave%></li>
+          </ul>
+        </div>
+        <div class="average">
+           <h6>カテゴリー別平均値%換算</h6> 
+           <ul>
+            <li>power:<%= @power %></li>
+            <li>dynamic:<%= @dynamic %></li>
+            <li>balance:<%= @balance %></li>
+            <li>move:<%= @move %></li>
+            <li>endulance:<%= @endurance %></li>
+          </ul>
+        </div>
+      </div>
+        
+      <div class="radar-chart col-md-10">
+         <!--canvas要素：グラフィックなどが描写可能となる-->
+        <canvas id="myRaderChart">Canvas not supported...</canvas>
+         
+        <!--読み込み-->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>-->
+        <!--headタグへ書き直した・・・ページ遷移時に上手く読み込めない現象を解消-->
+        
+        <script>
+          // var Power = <%#= @power_ave %> / 5 * 100;
+          // var Dynamic = <%#= @dynamic_ave %> / 5 * 100;
+          // var Balance = <%#= @balance_ave %> / 5 * 100;
+          // var Move = <%#= @move_ave %> / 5 * 100;
+          // var Endulance = <%#= @endurance_ave %> / 5 * 100;
+          
+          var Power = <%= @power %>
+          var Dynamic = <%= @dynamic %>
+          var Balance = <%= @balance %>
+          var Move = <%= @move %>
+          var Endulance = <%= @endurance %>
+          
+          // canvas要素を取得し変数ctxに入力
+          var ctx = document.getElementById("myRaderChart");
+          // チャート設定
+          var myRaderChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+              labels: ['Power', 'Dynamic', 'Blance', 'Technical', 'Endurance'],
+              datasets: [{
+                    label: '<%= current_user.name %>',
+                    data: [Power, Dynamic, Balance, Move, Endulance],
+                    backgroundColor: 'RGBA(225,95,150, 0.5)',
+                    borderColor: 'RGBA(225,95,150, 1)',
+                    borderWidth: 1,
+                    pointBackgroundColor: 'RGB(30,106,177)'
+                    
+                // 別データ以下に記述。いずれ平均値も表示したい。
+                // }, {
+                //     label: 'Bさん',
+                //     data: [73, 95, 80, 87, 79],
+                //     backgroundColor: 'RGBA(115,255,25, 0.5)',
+                //     borderColor: 'RGBA(115,255,25, 1)',
+                //     borderWidth: 1,
+                //     pointBackgroundColor: 'RGB(46,106,177)'
+                }]
               },
-              scale:{
-                  // グラフ軸の設定
-                  ticks:{
-                      suggestedMin: 0,
-                      suggestedMax: 100,
-                      stepSize: 10,
-                      // 軸ラベルの単位設定
-                      // callback: function(value, index, values){
-                      //     return  value +  '点'
-                      // }
+              options: {
+                  title: {
+                      display: false,
+                      text: '実力チャート'
+                  },
+                  scale:{
+                      // グラフ軸の設定
+                      ticks:{
+                          suggestedMin: 0,
+                          suggestedMax: 100,
+                          stepSize: 10,
+                          // 軸ラベルの単位設定
+                          // callback: function(value, index, values){
+                          //     return  value +  '点'
+                          // }
+                      }
                   }
               }
-          }
-      });
-    </script>
+          });
+        </script>
+      </div>
+      
+      
+      <div class="col evaluation_posts">
+        <h6>評価した投稿</h6>
+         <% @posts.each do |post| %>
+           <ul>
+             <li><%= post.gym_name + post.grade %></li>
+           </ul>
+         <% end %>
+      </div>
+      
 
+    </div>
+  </main>
+</div>
   
     <div>
       <%# @evaluation_posts.each do |post| %>
@@ -173,7 +171,6 @@
     </div>
  
 
-</div>
 
 
 

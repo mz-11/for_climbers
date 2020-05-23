@@ -39,21 +39,17 @@ class Evaluation < ApplicationRecord
   # end
   
   #指定されたユーザーidとカテゴリーを検索し、pointの平均値を算出。その後平均値を％表示に変換するメソッド
-  def get_ave_and_calc_ratio(a,b)
-    c_point = Evaluation.where("user_id = ? and category = ?", "a", "b").average(:point) #スコープとして
-    c_point / 5 * 100 #コントローラに
-  end  
+  # def get_ave_and_calc_ratio(a,b)
+  #   c_point = Evaluation.where("user_id = ? and category = ?", "a", "b").average(:point) #スコープとして
+  #   c_point / 5 * 100 #コントローラに
+  # end  
 
-
+  # :searchはクエリ用のメソッドの一種として呼び出す事ができる。
   scope :search, -> (a,b) {where("user_id = ? and category = ?", a,b)}
   # scope :search, -> (a,b) {where("user_id = ? and category = ?", params[:a], params[:b])}
   # scope :search, -> {where("user_id = ? and category = ?", params[:user_id], params[:category])}
   # scope :search, -> (a) {where("user_id = ?", a)}
-  
-  
-  # scope :search, -> {where(id: 23)}
-  # scope :search, -> {where("user_id = ? and post_id = ?", 22, 39)}
-  
+
 end
 
 

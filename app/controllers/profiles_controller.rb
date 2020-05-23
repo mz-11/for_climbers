@@ -29,12 +29,11 @@ class ProfilesController < ApplicationController
     # @move_sum = @move.all.sum(:point)
     # @endurance_sum = @endurance.all.sum(:point)
 
-    @power_ave = @power.average(:point).round(1)
-    @dynamic_ave = @dynamic.average(:point).round(1)
-    @balance_ave = @balance.average(:point).round(1)
-    @move_ave = @move.average(:point).round(1)
-    @endurance_ave = @endurance.average(:point).round(1)
-    
+    # @power_ave = @power.average(:point).round(1)
+    # @dynamic_ave = @dynamic.average(:point).round(1)
+    # @balance_ave = @balance.average(:point).round(1)
+    # @move_ave = @move.average(:point).round(1)
+    # @endurance_ave = @endurance.average(:point).round(1)
     
     # @power = get_ave_and_calc_ratio(current_user.id, "Power")
     
@@ -43,8 +42,6 @@ class ProfilesController < ApplicationController
     @balance = Evaluation.search(current_user.id, "Balance").average(:point) / 5 * 100
     @move = Evaluation.search(current_user.id, "Move").average(:point) / 5 * 100
     @endurance = Evaluation.search(current_user.id, "Endurance").average(:point) / 5 * 100
-  
-  
 
   end
   

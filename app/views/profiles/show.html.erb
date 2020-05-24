@@ -54,7 +54,7 @@
         <h4 class="col text-center text-secondary my-1 py-3 border-top">------実力チャート------</h4>
       </div>
       
-      <div class="evaluation-details col-md-2">
+      <div class="evaluation-details col-md-5 text-center">
         <div class="number">
           <h6>評価件数</h6>
           <ul>
@@ -65,29 +65,60 @@
             <li>endulance:<%#= @endurance.count %></li>
           </ul>
         </div>
+        <!--<div class="average">-->
+        <!--   <h6>カテゴリー別平均値</h6> -->
+        <!--   <ul>-->
+        <!--    <li>power:<%#= @power_ave %></li>-->
+        <!--    <li>dynamic:<%#= @dynamic_ave %></li>-->
+        <!--    <li>balance:<%#= @balance_ave %></li>-->
+        <!--    <li>move:<%#= @move_ave %></li>-->
+        <!--    <li>endulance:<%#= @endurance_ave%></li>-->
+        <!--  </ul>-->
+        <!--</div>-->
         <div class="average">
-           <h6>カテゴリー別平均値</h6> 
-           <ul>
-            <li>power:<%= @power_ave %></li>
-            <li>dynamic:<%= @dynamic_ave %></li>
-            <li>balance:<%= @balance_ave %></li>
-            <li>move:<%= @move_ave %></li>
-            <li>endulance:<%= @endurance_ave%></li>
-          </ul>
-        </div>
-        <div class="average">
-           <h6>カテゴリー別平均値%換算</h6> 
-           <ul>
-            <li>power:<%= @power %></li>
-            <li>dynamic:<%= @dynamic %></li>
-            <li>balance:<%= @balance %></li>
-            <li>move:<%= @move %></li>
-            <li>endulance:<%= @endurance %></li>
-          </ul>
+           <h4>カテゴリー別得点</h4>
+          <!-- <ul>-->
+          <!--  <li>power:<%#= @power %></li>-->
+          <!--  <li>dynamic:<%#= @dynamic %></li>-->
+          <!--  <li>balance:<%#= @balance %></li>-->
+          <!--  <li>move:<%#= @move %></li>-->
+          <!--  <li>endulance:<%#= @endurance %></li>-->
+          <!--</ul>-->
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>Categry</th>
+                <th>Score (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Power</th>
+                <td><%= @power %></td>
+              </tr>
+              <tr>
+                <th scope="row">Dynamic</th>
+                <td><%= @dynamic %></td>
+              </tr>
+              <tr>
+                <th scope="row">Balance</th>
+                <td><%= @balance %></td>
+              </tr>
+              <tr>
+                <th scope="row">Move</th>
+                <td ><%= @move %></td>
+              </tr>
+              <tr>
+                <th scope="row">Endurance</th>
+                <td><%= @endurance %></td>
+              </tr>
+            </tbody>
+          </table>
+
         </div>
       </div>
         
-      <div class="radar-chart col-md-10">
+      <div class="radar-chart col-md-7">
          <!--canvas要素：グラフィックなどが描写可能となる-->
         <canvas id="myRaderChart">Canvas not supported...</canvas>
          
@@ -96,12 +127,6 @@
         <!--headタグへ書き直した・・・ページ遷移時に上手く読み込めない現象を解消-->
         
         <script>
-          // var Power = <%#= @power_ave %> / 5 * 100;
-          // var Dynamic = <%#= @dynamic_ave %> / 5 * 100;
-          // var Balance = <%#= @balance_ave %> / 5 * 100;
-          // var Move = <%#= @move_ave %> / 5 * 100;
-          // var Endulance = <%#= @endurance_ave %> / 5 * 100;
-          
           var Power = <%= @power %>
           var Dynamic = <%= @dynamic %>
           var Balance = <%= @balance %>
@@ -109,7 +134,8 @@
           var Endulance = <%= @endurance %>
           
           // canvas要素を取得し変数ctxに入力
-          var ctx = document.getElementById("myRaderChart");
+          var ctx = document.getElementById("myRaderChart").getContext('2d');
+          ctx.canvas.height = 200;
           // チャート設定
           var myRaderChart = new Chart(ctx, {
             type: 'radar',

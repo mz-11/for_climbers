@@ -9,7 +9,7 @@
             <div class="post-datail">
               <ul class="list-unstyled">
                 <li class="list-item">投稿者： <%= post.user.name %></li>
-                <li class="list-item">(id:<%= post.id %>)</li>
+                <!--<li class="list-item">(id:<%#= post.id %>)</li>-->
                 <li class="list-item">課題名：<%= post.gym_name + " " + post.grade %></li>
                 <li class="list-item">カテゴリー：<%= post.category %></li>
               </ul>
@@ -22,7 +22,7 @@
               <%= link_to image_tag(post.image.url, class:"img"), post_path(id: post.id, user_id: post.user_id) %>
             </div>
             
-            <div class="self-evaluation-select">
+            <div class="self-evaluation-select pt-2">
               <h6>Self-Evaluation</h6>
               <% if !post.evaluation_users.include?(current_user) %> <!--評価の有無で評価ボタンの表示を変える条件分岐-->
                 <ul class="list-inline">
@@ -76,24 +76,7 @@
                 <% end %>
             <% end %>
             </div>
-            
-            <!--<div class="btn-group-sm btn-group-toggle " data-toggle="buttons">-->
-            <!--  <label class="btn btn-secondary active">-->
-            <!--    <input type="radio" name="options" id="option1" checked>1-->
-                
-            <!--  </label>-->
-            <!--  <label class="btn btn-secondary btn ">-->
-            <!--    <input type="radio" name="options" id="option2">2-->
-                
-            <!--  </label>-->
-            <!--  <label class="btn btn-secondary">-->
-            <!--    <input type="radio" name="options" id="option3"> 3-->
-            <!--  </label>-->
-            <!--  <p>（↑理想のボタンイメージ）</p>-->
-            <!--</div>-->
-            
-        
-            <%= link_to "投稿削除(※後で消す)", post_path(id: post.id), method: :delete, class: "btn btn-primary"%>
+            <%#= link_to "投稿削除(※後で消す)", post_path(id: post.id), method: :delete, class: "btn btn-primary"%>
           </div>
         </div>
       <% end %>

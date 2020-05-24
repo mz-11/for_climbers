@@ -15,7 +15,6 @@ class User < ApplicationRecord
    # throughオプションによりevaluations経由でpostを取得
    # sourceオプションでevaluation.rbで設定しているbelongs_to :postを参照する。これによりuser.evaluation_postsと書けばuserが評価した投稿を一気に取得できる
    # オプションはアソシエーションの名前を外部キーの名前から外れた名前にする場合に設定する
-   
 end
 
 

@@ -7,17 +7,19 @@
         <div class="col-lg-4">
           <div class="post-index-single bg-light my-2 p-4 border-dark rounded">
             <div class="post-datail">
-              <p class="post-author">投稿者： <%= post.user.name %></p>
-              <p>(id:<%= post.id %>)</p>
-              <p class="title">課題名：<%= post.gym_name + " " + post.grade %></p>
-              <p class="category">カテゴリー：<%= post.category %></p>
+              <ul class="list-unstyled">
+                <li class="list-item">投稿者： <%= post.user.name %></li>
+                <li class="list-item">(id:<%= post.id %>)</li>
+                <li class="list-item">課題名：<%= post.gym_name + " " + post.grade %></li>
+                <li class="list-item">カテゴリー：<%= post.category %></li>
+              </ul>
               <!--<p class="post-text">-->
               <%#= post.description %>
             <!--</p>-->
             </div>
             <!--投稿イメージ-->
             <div class="post-image text-center">
-              <%= link_to image_tag(post.image.url, class:"img"), post_path(id: post.id) %>
+              <%= link_to image_tag(post.image.url, class:"img"), post_path(id: post.id, user_id: post.user_id) %>
             </div>
             
             <div class="self-evaluation-select">
@@ -34,48 +36,46 @@
               
                 <% @evaluations.each do |evaluation| %><!-- user_idがcurrent_user_idのevaluationをeachで展開 -->
                   <% if post.id ==  evaluation.post_id %>
-                    <ul class="list-inline">
-                      <% if evaluation.point == 1 %> <!-- ボタン表示の切替-->
-                        <li class="list-inline-item"><%= link_to "1",evaluation_path(id: evaluation.id, post_id: post.id, point: "1"), method: :put, class: "btn btn-sm btn-info" %></li>
+                    <ul class="list-inline"><!-- 評価済みボタンはアクティブ表示。もう一度クリックで評価の削除。-->
+                      <% if evaluation.point == 1 %> 
+                        <li class="list-inline-item"><%= link_to "1",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-info" %></li>
                       <% else %>
                         <li class="list-inline-item"><%= link_to "1",evaluation_path(id: evaluation.id, post_id: post.id, point: "1"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
                       <% end %>
                       
-                      <% if evaluation.point == 2 %> <!-- ボタン表示の切替-->
-                        <li class="list-inline-item"><%= link_to "2",evaluation_path(id: evaluation.id, post_id: post.id, point: "2"), method: :put, class: "btn btn-sm btn-info" %></li>
+                      <% if evaluation.point == 2 %> 
+                        <li class="list-inline-item"><%= link_to "2",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-info" %></li>
                       <% else %>
                         <li class="list-inline-item"><%= link_to "2",evaluation_path(id: evaluation.id, post_id: post.id, point: "2"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
                       <% end %>
                       
-                      <% if evaluation.point == 3 %> <!-- ボタン表示の切替-->
-                        <li class="list-inline-item"><%= link_to "3",evaluation_path(id: evaluation.id, post_id: post.id, point: "3"), method: :put, class: "btn btn-sm btn-info" %></li>
+                      <% if evaluation.point == 3 %> 
+                        <li class="list-inline-item"><%= link_to "3",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-info" %></li>
                       <% else %>
                         <li class="list-inline-item"><%= link_to "3",evaluation_path(id: evaluation.id, post_id: post.id, point: "3"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
                       <% end %>
                       
                       
-                      <% if evaluation.point == 4 %> <!-- ボタン表示の切替-->
-                        <li class="list-inline-item"><%= link_to "4",evaluation_path(id: evaluation.id, post_id: post.id, point: "4"), method: :put, class: "btn btn-sm btn-info" %></li>
+                      <% if evaluation.point == 4 %> 
+                        <li class="list-inline-item"><%= link_to "4",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-info" %></li>
                       <% else %>
                         <li class="list-inline-item"><%= link_to "4",evaluation_path(id: evaluation.id, post_id: post.id, point: "4"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
                       <% end %>
                       
                       
-                      <% if evaluation.point == 5 %> <!-- ボタン表示の切替-->
-                        <li class="list-inline-item"><%= link_to "5",evaluation_path(id: evaluation.id, post_id: post.id, point: "5"), method: :put, class: "btn btn-sm btn-info" %></li>
+                      <% if evaluation.point == 5 %> 
+                        <li class="list-inline-item"><%= link_to "5",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-info" %></li>
                       <% else %>
                         <li class="list-inline-item"><%= link_to "5",evaluation_path(id: evaluation.id, post_id: post.id, point: "5"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
                       <% end %>
                       
                       <!--評価ボタン-->
-                        <li class="list-inline-item"><%= link_to "評価リセット",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-outline-warning mt-1" %></li>
+                        <!--<li class="list-inline-item"><%#= link_to "評価リセット",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-outline-warning mt-1" %></li>-->
                     </ul>
                   <% end %>
                 <% end %>
             <% end %>
             </div>
-            
-
             
             <!--<div class="btn-group-sm btn-group-toggle " data-toggle="buttons">-->
             <!--  <label class="btn btn-secondary active">-->

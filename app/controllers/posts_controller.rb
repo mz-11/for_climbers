@@ -11,6 +11,13 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    
+    # プロフィールを登録していない場合はサンプルアイコンを表示
+    @profile = Profile.find_by(user_id: params[:user_id])
+      # @profile
+    # else
+    #   @profile.profile_image 
+    # end
   end
   
   def new

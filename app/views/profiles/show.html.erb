@@ -7,7 +7,7 @@
           <% if current_user.profile != nil %>
             <%= image_tag current_user.profile.profile_image.url, class: "mx-auto d-block img-thumbnail rounded-circle", size: "150x150" %>
           <% else %>
-            <div class="text-center text-dark" style="height: 150px;", "width: 150px;"><%= "プロフィール画像を投稿してください" %></div>
+            <div class="d-flex align-items-center justify-content-center text-dark" style="height: 150px;", "width: 150px;"><%= "プロフィール画像を投稿してください" %></div>
           <% end %>
         </div>
         <div class="profile-button py-2 text-center">
@@ -23,18 +23,24 @@
       <div class="profile-detail col-md-7 p-5">
         <h4>User : <%= current_user.name %></h4>
         <h5>Details</h5>
-        <ul>
-          <li>height: 
+        <ul class="list-unstyled">
+          <li>Height: 
             <% if current_user.profile != nil %>
-              <%= current_user.profile.height %>
-            <% end %> cm </li> <!--ここでのprofileはuserモデルにhas_oneで定義した:profileキー-->
-          <li>weight:
+              <%= current_user.profile.height + "cm" %>
+            <% else %>
+              <span class="text-muted">未登録</span>
+            <% end %></li> <!--ここでのprofileはuserモデルにhas_oneで定義した:profileキー-->
+          <li>Weight:
             <% if current_user.profile != nil %>
-              <%= current_user.profile.weight %>
-            <% end %> kg</li>
-          <li>usually grade: 
+              <%= current_user.profile.weight + "kg" %>
+            <% else %>
+              <span class="text-muted">未登録</span>
+            <% end %></li>
+          <li>Usually grade: 
             <% if current_user.profile != nil %>
               <%= current_user.profile.usually_grade %>
+            <% else %>
+              <span class="text-muted">未登録</span>
             <% end %></li>
         </ul> 
       </div>
@@ -45,7 +51,7 @@
   <main class="container chart-wrapper">
     <div class="row">
       <div class="col-md-12">
-        <h4 class="col text-center text-secondary my-4">------実力チャート------</h4>
+        <h4 class="col text-center text-secondary my-1 py-3 border-top">------実力チャート------</h4>
       </div>
       
       <div class="evaluation-details col-md-2">

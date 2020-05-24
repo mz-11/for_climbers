@@ -165,14 +165,27 @@
 
 // }
 
+.alert {
+  z-index: 100000;
+}
+
 .jumbotron {
   background-image: url("top2.jpg");
-  width: 100vw;
+  width: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+// .jumbotron-fluid {
+//   background-image: url("top2.jpg");
+//   width: 100vw;
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-attachment: fixed;
+// }
 
 // .title {
 //   background-color: rgba(0, 0, 0, 0.5);
@@ -194,8 +207,19 @@
   // object-fit: contain; //縦横比を保持し、ボックスに収まるようにリサイズ。幅と高さの大きい方に合わせて比率を保持してボックスにフィット。
 }
 
+.post-img {
+  width: 100%;
+  height: 600px;
+  object-fit: contain; //縦横比を保持してボックスを完全に覆うようリサイズ。縦横のうち小さい方を基準にして自動的にリサイズし、ボックスからはみ出した部分はトリミングされる。
+  // object-fit: contain; //縦横比を保持し、ボックスに収まるようにリサイズ。幅と高さの大きい方に合わせて比率を保持してボックスにフィット。
+}
+
 .rader-chart {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
+
+// .climbers-info-icon {
+//   img
+// }

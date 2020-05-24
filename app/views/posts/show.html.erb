@@ -1,18 +1,71 @@
-  
-<div class="topic-index-wrapper">
+<main class="post-show-wrapper">
   <div class="container">
-    
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="topic-index-single">
-            <h2><%= @post.user.name %></h2>
-            <%= image_tag @post.image.url %>
+    <div class="row">
+      <div class="col-md-11 offset-md-1 post-title p-2 my-4 border-bottom">
+        <h3><%= @post.gym_name + " " + @post.grade%></h3>
+      </div>
+      <div class="col-md-7 post-image text-center border-right">
+        <%= image_tag @post.image.url, class: "post-img" %>
+      </div>
+      <div class="col-md-5 post-info">
+        
+        <h4><i class="fas fa-user fa-fw"></i>Climbers Info</h4>
+        <div class="row">
+          <div class="col-sm-2">
+            <% if @profile != nil %>
+              <%= image_tag @profile.profile_image.url, class: "mx-auto d-block img-thumbnail rounded-circle", size: "50x50" %>
+            <% else %>
+              <%= image_tag "/assets/images/icon.png", class: "mx-auto d-block img-thumbnail rounded-circle", size: "50x50" %>
+            <% end %>
           </div>
+         
+          
+          <div class="col-sm-10">
+            <h5><%= @post.user.name %></h5>
+            <ul class="list-unstyled">
+              <li>
+                <% if @profile != nil %>
+                Heiht : <%= @profile.height + "cm"  %>
+                <% else %>
+                Heiht :
+                <% end %>
+              </li>
+              <li>
+                <% if @profile != nil %>
+                Weight : <%= @profile.weight + "kg"  %>
+                <% else %>
+                Weight :
+                <% end %>
+              </li>
+              <li>
+                <% if @profile != nil %>
+                Usually Grade : <%= @profile.usually_grade %>
+                <% else %>
+                Usually Grade :
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          
         </div>
+        
+        <h4 class="border-top pt-2"><i class="fas fa-map-marker-alt fa-fw"></i>Gym Info</h4>
+        <div class="p-2">
+          <p><%= @post.gym_name %></p>
+        </div>
+        
+      
+        
       </div>
-      <div class="col-md-6 col-md-offset-3">
-        <%= link_to "編集", edit_post_path(id: @post.id), class: 'btn btn-primary' %>
-      </div>
-  
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+      <%= link_to "編集", edit_post_path(id: @post.id), class: 'btn btn-primary' %>
+    </div>
+    
+    <% if current_user.id == @post.user_id %>
+      <%= link_to "投稿削除", post_path(id: @post.id), method: :delete, class: "btn btn-primary"%>
+      <% end %>
   </div>
-</div>
+  
+</main>
+

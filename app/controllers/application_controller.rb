@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :login_required
+  # pages,users_controllerにはskip_before_actionを記述
   
   
   helper_method :current_user
@@ -11,8 +12,9 @@ class ApplicationController < ActionController::Base
   
   private
   def login_required
-    redirect_to login_path unless current_user
-    flash[:warning] = "投稿を見るにはログインしてください"
+    if current_user == nil
+      redirect_to login_path, danger:"投稿を見るにはログインしてください"
+    end
   end
    
   def current_user #現在ログインしているuserを返すメソッド

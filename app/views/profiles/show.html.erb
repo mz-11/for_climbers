@@ -36,7 +36,7 @@
             <% else %>
               <span class="text-muted">未登録</span>
             <% end %></li>
-          <li>Usually grade: 
+          <li>Usually Grade: 
             <% if current_user.profile != nil %>
               <%= current_user.profile.usually_grade %>
             <% else %>
@@ -51,20 +51,14 @@
   <main class="container chart-wrapper">
     <div class="row">
       <div class="col-md-12">
-        <h4 class="col text-center text-secondary my-1 py-3 border-top">------実力チャート------</h4>
+        <h1 class="col text-center text-dark my-1 py-3 border-top">Your Ability</h1>
       </div>
       
       <div class="evaluation-details col-md-5 text-center">
-        <div class="number">
-          <h6>評価件数</h6>
-          <ul>
-            <li>power:<%#= @power.count %></li>
-            <li>dynamic:<%#= @dynamic.count %></li>
-            <li>balance:<%#= @balance.count %></li>
-            <li>move:<%#= @move.count %></li>
-            <li>endulance:<%#= @endurance.count %></li>
-          </ul>
-        </div>
+        <!--<div class="number">-->
+        <!--  <h6>評価件数</h6>-->
+        <!--</div>-->
+        
         <!--<div class="average">-->
         <!--   <h6>カテゴリー別平均値</h6> -->
         <!--   <ul>-->
@@ -75,8 +69,9 @@
         <!--    <li>endulance:<%#= @endurance_ave%></li>-->
         <!--  </ul>-->
         <!--</div>-->
+        
         <div class="average">
-           <h4>カテゴリー別得点</h4>
+           <!--<h4>カテゴリー別得点</h4>-->
           <!-- <ul>-->
           <!--  <li>power:<%#= @power %></li>-->
           <!--  <li>dynamic:<%#= @dynamic %></li>-->
@@ -84,7 +79,7 @@
           <!--  <li>move:<%#= @move %></li>-->
           <!--  <li>endulance:<%#= @endurance %></li>-->
           <!--</ul>-->
-          <table class="table">
+          <table class="table my-4">
             <thead class="thead-dark">
               <tr>
                 <th>Categry</th>

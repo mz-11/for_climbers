@@ -176,6 +176,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  height: 340px;
 }
 
 // .jumbotron-fluid {
@@ -222,4 +223,13 @@
 
 // .climbers-info-icon {
 //   img
+// }
+
+.dropshadow {
+  color: whitesmoke;
+  filter:drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.8));
+}
+
+// .arrow {
+//   width: 20px;
 // }

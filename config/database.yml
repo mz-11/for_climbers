@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: for_climbers_production
-  username: for_climbers
-  password: <%= ENV['for_climbers_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5

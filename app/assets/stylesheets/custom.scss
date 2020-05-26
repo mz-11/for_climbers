@@ -177,6 +177,7 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 340px;
+  border-radius: 0;
 }
 
 // .jumbotron-fluid {
@@ -233,3 +234,9 @@
 // .arrow {
 //   width: 20px;
 // }
+
+.training-icon {
+  width: 100%;
+  height: 128px;
+  object-fit: contain;
+}

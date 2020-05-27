@@ -1,8 +1,5 @@
 class ProfilesController < ApplicationController
   def show
-    # @profile = Profile.find_by(params[:id])
-    # @profile = Profile.find_by(user_id: params[:user_id])
-    # @profile = Profile.find_by(params[:user_id])
     # @profile = Profile.find_by(id: params[:id])
     #current_userに関連付けしているため、ここは書かなくて良い。 ルーティングがresourceなのもcurrent_userのみで値を引き出せるため。
     

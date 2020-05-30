@@ -33,31 +33,37 @@ class ProfilesController < ApplicationController
     # @power = get_ave_and_calc_ratio(current_user.id, "Power")
   
     # 評価の有無で条件分岐。未評価は0を代入。
-    if @power_search = Evaluation.search(current_user.id, "Power")
+    # binding.pry
+    @power_search = Evaluation.search(current_user.id, "Power")
+    unless @power_search.blank?
       @power = @power_search.average(:point) / 5 * 100
     else
       @power = 0
     end
     
-    if @dynamic_search = Evaluation.search(current_user.id, "Dynamic")
+    @dynamic = Evaluation.search(current_user.id, "Dynamic")
+    unless @dynamic_search.blank?
       @dynamic = @dynamic_search.average(:point) / 5 * 100
     else
       @dynamic = 0
     end
     
-    if @balance_search = Evaluation.search(current_user.id, "Balance")
+    @balance_search = Evaluation.search(current_user.id, "Balance")
+    unless @balance_search.blank?
       @balance = @balance_search.average(:point) / 5 * 100
     else
       @balance = 0
     end
     
-    if @move_search = Evaluation.search(current_user.id, "Move")
+   @move_search = Evaluation.search(current_user.id, "Move")
+    unless @move_search.blank?
       @move = @move_search.average(:point) / 5 * 100
     else
       @move = 0
     end
     
-    if @endurance_search = Evaluation.search(current_user.id, "Endurance")
+    @endurance_search = Evaluation.search(current_user.id, "Endurance")
+    unless @endurance_search.blank?
       @endurance = @endurance_search.average(:point) / 5 * 100
     else
       @endurance = 0
@@ -74,8 +80,6 @@ class ProfilesController < ApplicationController
     # binding.pry
     @profile = Profile.new(profile_params)
     # @profile = current_user.profiles.new(profile_params)
-    
-    
     if @profile.save
       # flash.now[:success] = "プロフィールを作成しました！"
       redirect_to profile_path, success: "プロフィールを作成しました！"
@@ -89,7 +93,6 @@ class ProfilesController < ApplicationController
     # @profile = Profile.find_by(id: params[:user_id]) user_idと同じ値のプロフィールidを検索することになる。
     @profile = Profile.find_by(user_id: params[:user_id])
   end
-  
   
   def update
     @profile = Profile.find_by(params[:user_id])
@@ -107,6 +110,4 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:profile_image, :height, :weight, :usually_grade).merge(user_id: current_user.id)
   end
-  
-
 end

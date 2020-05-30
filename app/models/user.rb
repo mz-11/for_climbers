@@ -4,9 +4,11 @@ class User < ApplicationRecord
    # メールアドレスの正規表現を追加
    validates :email, presence: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
    
-   validates :password, presence: true
+   validates :password, presence: true, format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}+\z/i}
   
-   has_secure_password #gem bcryptをインストールすることで使用できる
+   #gem bcryptをインストールすることで使用できる
+   #DB内のpassword_digestという属性にハッシュ化したパスワードを保存し、password_confirmationが使えるようになる
+   has_secure_password 
    
    has_many :posts, dependent: :destroy
    has_one :profile, dependent: :destroy

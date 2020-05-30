@@ -33,6 +33,7 @@ class ProfilesController < ApplicationController
     # @power = get_ave_and_calc_ratio(current_user.id, "Power")
   
     # 評価の有無で条件分岐。未評価は0を代入。
+    
     # binding.pry
     @power_search = Evaluation.search(current_user.id, "Power")
     unless @power_search.blank?

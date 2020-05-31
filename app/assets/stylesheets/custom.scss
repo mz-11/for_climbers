@@ -170,7 +170,8 @@
 }
 
 .jumbotron {
-  background-image: url("top2.jpg");
+  // background-image: url("top2.jpg");
+  background-image: image-url("top2.jpg");
   width: 100%;
   background-size: cover;
   background-position: center;
@@ -196,11 +197,6 @@
 .post-index-wrapper {
   background-color: #dcdcdc;
 }
-
-// .img-fluid {
-//   max-width: 100%;
-//   height: auto;
-// }
 
 .img {
   width: 100%;

@@ -78,3 +78,4 @@ gem 'rename'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'bootstrap', '~> 4.4.1'
+gem 'fog-aws' #ファイルの保存先を AWS S3 に指定するために必要

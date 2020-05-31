@@ -8,6 +8,17 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
+  # S3用の設定
+  # development(開発環境)とtest環境はlocalファイル、それ以外（productionやstaging）はS3を使う設定。
+  # ifを用いて設定することで全ての画像がS3に保存され、料金が発生してしまうことを防ぐ。
+  if Rails.env.development?
+    storage :file
+  elsif Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
+
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir

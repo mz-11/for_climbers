@@ -37,11 +37,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
     if @post.save
       #save!とすればレコードの作成・保存に失敗時例外を発生させることでエラーが生じる
-      flash.now[:success] = '投稿に成功しました'
-      redirect_to posts_path
+      redirect_to posts_path, success:"投稿に成功しました"
     else
-      render :new
       flash.now[:danger] = "投稿に失敗しました"
+      render :new
     end
   end
   

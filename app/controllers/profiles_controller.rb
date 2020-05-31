@@ -42,7 +42,7 @@ class ProfilesController < ApplicationController
       @power = 0
     end
     
-    @dynamic = Evaluation.search(current_user.id, "Dynamic")
+    @dynamic_search = Evaluation.search(current_user.id, "Dynamic")
     unless @dynamic_search.blank?
       @dynamic = @dynamic_search.average(:point) / 5 * 100
     else

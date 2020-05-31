@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   validates :image, presence: true
   validates :gym_name, presence: true
   validates :grade, presence: true
+  validates :category, presence: true
   # validates :description, presence: true
   
   belongs_to :user

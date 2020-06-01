@@ -42,6 +42,9 @@
                 <%= link_to "My Page", profile_path, class: "nav-link text-white" %>
               </li class="nav-item">
               <li class="nav-item">
+                <%= link_to "Setting", edit_user_path(id: current_user.id), class: "nav-link text-white" %>
+              </li class="nav-item">
+              <li class="nav-item">
                 <%= link_to "Logout", logout_path, method: :delete, class: "nav-link text-white" %>
               </li>
             <% else %>  <!-- loginしていないとき -->

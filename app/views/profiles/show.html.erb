@@ -70,16 +70,9 @@
         <!--  </ul>-->
         <!--</div>-->
         
-        <div class="average">
-           <!--<h4>カテゴリー別得点</h4>-->
-          <!-- <ul>-->
-          <!--  <li>power:<%#= @power %></li>-->
-          <!--  <li>dynamic:<%#= @dynamic %></li>-->
-          <!--  <li>balance:<%#= @balance %></li>-->
-          <!--  <li>move:<%#= @move %></li>-->
-          <!--  <li>endulance:<%#= @endurance %></li>-->
-          <!--</ul>-->
+        <div class="average-point">
           <table class="table my-4 p-4">
+          <!--<caption>self-evaluation details</caption>-->
             <thead class="thead-dark">
               <tr>
                 <th>Category</th>
@@ -89,23 +82,23 @@
             <tbody>
               <tr>
                 <th scope="row">Power</th>
-                <td><%= @power %></td>
+                <td><%= @power.round(1) %></td> <!--小数点第一まで表示-->
               </tr>
               <tr>
                 <th scope="row">Dynamic</th>
-                <td><%= @dynamic %></td>
+                <td><%= @dynamic.round(1) %></td>
               </tr>
               <tr>
                 <th scope="row">Balance</th>
-                <td><%= @balance %></td>
+                <td><%= @balance.round(1) %></td>
               </tr>
               <tr>
                 <th scope="row">Move</th>
-                <td ><%= @move %></td>
+                <td ><%= @move.round(1) %></td>
               </tr>
               <tr>
                 <th scope="row">Endurance</th>
-                <td><%= @endurance %></td>
+                <td><%= @endurance.round(1) %></td>
               </tr>
             </tbody>
           </table>

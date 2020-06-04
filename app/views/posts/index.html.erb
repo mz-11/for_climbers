@@ -33,17 +33,21 @@
               <% if !post.evaluation_users.include?(current_user) %> <!--評価の有無で評価ボタンの表示を変える条件分岐-->
                 
                 <ul class="list-inline">
+                  <li class="list-inline-item"><span class="text-info align-middle">hard</span></li>
                   <li class="list-inline-item"><%= link_to "1",evaluations_path(post_id: post.id, point: "1", category: post.category), method: :post, class: "btn btn-sm btn-outline-info" %></li>
                   <li class="list-inline-item"><%= link_to "2",evaluations_path(post_id: post.id, point: "2", category: post.category), method: :post, class: "btn btn-sm btn-outline-info" %></li>
                   <li class="list-inline-item"><%= link_to "3",evaluations_path(post_id: post.id, point: "3", category: post.category), method: :post, class: "btn btn-sm btn-outline-info" %></li>
                   <li class="list-inline-item"><%= link_to "4",evaluations_path(post_id: post.id, point: "4", category: post.category), method: :post, class: "btn btn-sm btn-outline-info" %></li>
                   <li class="list-inline-item"><%= link_to "5",evaluations_path(post_id: post.id, point: "5", category: post.category), method: :post, class: "btn btn-sm btn-outline-info" %></li>
-                </ul>
+                  <li class="list-inline-item"><span class="text-info align-middle mr-1">easy</span></li>
+                  
+                </ul></li>
               <% else %>
               
                 <% @evaluations.each do |evaluation| %><!-- user_idがcurrent_user_idのevaluationをeachで展開 -->
                   <% if post.id ==  evaluation.post_id %>
                     <ul class="list-inline"><!-- 評価済みボタンはアクティブ表示。もう一度クリックで評価の削除。-->
+                      <li class="list-inline-item"><span class="text-info align-middle">hard</span></li>
                       <% if evaluation.point == 1 %> 
                         <li class="list-inline-item"><%= link_to "1",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-info" %></li>
                       <% else %>
@@ -62,22 +66,19 @@
                         <li class="list-inline-item"><%= link_to "3",evaluation_path(id: evaluation.id, post_id: post.id, point: "3"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
                       <% end %>
                       
-                      
                       <% if evaluation.point == 4 %> 
                         <li class="list-inline-item"><%= link_to "4",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-info" %></li>
                       <% else %>
                         <li class="list-inline-item"><%= link_to "4",evaluation_path(id: evaluation.id, post_id: post.id, point: "4"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
                       <% end %>
                       
-                      
                       <% if evaluation.point == 5 %> 
                         <li class="list-inline-item"><%= link_to "5",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-info" %></li>
                       <% else %>
                         <li class="list-inline-item"><%= link_to "5",evaluation_path(id: evaluation.id, post_id: post.id, point: "5"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
                       <% end %>
-                      
-                      <!--評価ボタン-->
-                        <!--<li class="list-inline-item"><%#= link_to "評価リセット",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-outline-warning mt-1" %></li>-->
+                      <li class="list-inline-item"><span class="text-info align-middle">easy</span></li>
+                     
                     </ul>
                   <% end %>
                 <% end %>

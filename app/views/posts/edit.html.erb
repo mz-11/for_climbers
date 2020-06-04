@@ -3,8 +3,7 @@
     <div class="row  justify-content-center">
       <div class="col-md-6 my-5">
         <h3 class="text-center title">投稿の編集</h3>
-        
-        <!--後ほどパーシャルテンプレートを使って下記フォームコードをまとめる-->
+       
         <%= form_with model: @post, url: post_path, local: true do |f| %>
           <div class="form-group">
             <%= f.label :image %>
@@ -24,14 +23,13 @@
           
           <div class="form-group">
             <%= f.label :category %>
-            <%= f.select :category, [["Power", "Power"], ["Dynamic", "Dynamic"], ["Blance", "Balance"], ["Move", "Move"], ["Endurance", "Endurance"]], {include_blank: true, selected: "カテゴリー選択"}, {class: 'form-control'} %> <!-- f.select( プロパティ名, タグの情報, {オプション}, {HTMLオプション} )-->
+            <%= f.select :category, [["Power", "Power"], ["Dynamic", "Dynamic"], ["Balance", "Balance"], ["Move", "Move"], ["Endurance", "Endurance"]], {include_blank: true, selected: "カテゴリー選択"}, {class: 'form-control'} %> <!-- f.select( プロパティ名, タグの情報, {オプション}, {HTMLオプション} )-->
           </div>
          
           <div class="form-group">
             <%= f.label :description %>
             <%= f.text_area :description, class: 'form-control' %>
           </div>
-
           <%= f.submit '保存', class: 'btn btn-primary btn-block' %>
         <% end %>
       </div>

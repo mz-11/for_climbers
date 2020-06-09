@@ -20,12 +20,11 @@ class SessionsController < ApplicationController
       flash.now[:danger] = "ログインできません"
       render :new
     end
-    
   end
   
   def destroy
     # session.delite(:user_id) #セッションからuser_idをピンポイントで削除
-    # @current_user = nil session.delite(:user_id)だけではcurrent_userメソッドが使えるままになっているため、ユーザー情報を削除
+    # @current_user = nil session.delete(:user_id)だけではcurrent_userメソッドが使えるままになっているため、ユーザー情報を削除
     reset_session #ユーザーに紐づく情報を全て削除
     redirect_to root_path, info: "ログアウトしました"
   end

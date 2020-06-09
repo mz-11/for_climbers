@@ -2,8 +2,6 @@
   <div class="container p-3">
     <div class="row">
       <% @posts.each do |post| %>
-      
-      <%# evaluation_posts.each do |post| %>
         <div class="col-lg-4">
           <div class="post-index-single bg-light my-2 p-4 border-dark rounded">
             <div class="post-datail">
@@ -13,42 +11,35 @@
                 <li class="list-item">課題名：<%= post.gym_name + " " + post.grade %></li>
                 <li class="list-item">カテゴリー：<%= post.category %></li>
               </ul>
-              <!--<p class="post-text">-->
-              <%#= post.description %>
-            <!--</p>-->
             </div>
+            
             <!--投稿イメージ-->
             <div class="post-image text-center">
               <%= link_to image_tag(post.image.url, class:"img"), post_path(id: post.id, user_id: post.user_id) %>
             </div>
             
+            <!-- 自己評価ボタン -->
             <div class="self-evaluation-select pt-2">
               <h6>Self-Evaluation</h6>
-              <!--<div class="easy-hard">-->
-              <!--  <span class="text-info">easy</span>-->
-              <!--  <span class="text-info ">hard</span>-->
-              <!--</div>-->
-              <%#= image_tag "arrow.png", :size => "50x50"%>
-              <!--<i class="fas fa-arrows-alt-h arrow"></i>-->
               <% if !post.evaluation_users.include?(current_user) %> <!--評価の有無で評価ボタンの表示を変える条件分岐-->
-                
+                <!-- 未評価ボタン-->
                 <ul class="list-inline">
-                  <li class="list-inline-item"><span class="text-info align-middle">hard</span></li>
+                  <li class="list-inline-item">
+                    <span class="text-info align-middle">hard</span></li><!-- 難易度ガイド -->
                   <li class="list-inline-item"><%= link_to "1",evaluations_path(post_id: post.id, point: "1", category: post.category), method: :post, class: "btn btn-sm btn-outline-info" %></li>
                   <li class="list-inline-item"><%= link_to "2",evaluations_path(post_id: post.id, point: "2", category: post.category), method: :post, class: "btn btn-sm btn-outline-info" %></li>
                   <li class="list-inline-item"><%= link_to "3",evaluations_path(post_id: post.id, point: "3", category: post.category), method: :post, class: "btn btn-sm btn-outline-info" %></li>
                   <li class="list-inline-item"><%= link_to "4",evaluations_path(post_id: post.id, point: "4", category: post.category), method: :post, class: "btn btn-sm btn-outline-info" %></li>
                   <li class="list-inline-item"><%= link_to "5",evaluations_path(post_id: post.id, point: "5", category: post.category), method: :post, class: "btn btn-sm btn-outline-info" %></li>
                   <li class="list-inline-item"><span class="text-info align-middle mr-1">easy</span></li>
-                  
                 </ul></li>
               <% else %>
-              
-                <% @evaluations.each do |evaluation| %><!-- user_idがcurrent_user_idのevaluationをeachで展開 -->
-                  <% if post.id ==  evaluation.post_id %>
+                <!--評価済みボタン-->
+                <% @evaluations.each do |evaluation| %><!-- user_idがcurrent_user.idのevaluationをeachで展開 -->
+                  <% if post.id == evaluation.post_id %>
                     <ul class="list-inline"><!-- 評価済みボタンはアクティブ表示。もう一度クリックで評価の削除。-->
                       <li class="list-inline-item"><span class="text-info align-middle">hard</span></li>
-                      <% if evaluation.point == 1 %> 
+                      <% if evaluation.point == 1 %><!-- 評価の有無でボタンのスタイルと機能を切り替える条件分岐-->
                         <li class="list-inline-item"><%= link_to "1",evaluation_path(id: evaluation.id), method: :delete, class: "btn btn-sm btn-info" %></li>
                       <% else %>
                         <li class="list-inline-item"><%= link_to "1",evaluation_path(id: evaluation.id, post_id: post.id, point: "1"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
@@ -77,25 +68,16 @@
                       <% else %>
                         <li class="list-inline-item"><%= link_to "5",evaluation_path(id: evaluation.id, post_id: post.id, point: "5"), method: :put, class: "btn btn-sm btn-outline-info" %></li>
                       <% end %>
-                      <li class="list-inline-item"><span class="text-info align-middle">easy</span></li>
-                     
+                      <li class="list-inline-item"><span class="text-info align-middle">easy</span></li>ｓ
                     </ul>
                   <% end %>
                 <% end %>
-            <% end %>
+              <% end %>
             </div>
-            <%#= link_to "投稿削除(※後で消す)", post_path(id: post.id), method: :delete, class: "btn btn-primary"%>
             
-
           </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-  
-  
-  
-      
-   
-  </div>

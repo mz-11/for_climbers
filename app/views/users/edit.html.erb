@@ -7,7 +7,8 @@
           <%= form_with model: @user, local: true do |f| %>
             <div class="form-group">
             <%= f.label :name %>
-            <%= f.text_field :name, class: 'form-control' %><!--テキストボックスを表示。入力フォームには他にもチェックボックスなどがある-->
+            <%= f.text_field :name, class: 'form-control' %>
+            <!--テキストボックスを表示。入力フォームには他にもチェックボックスなどがある-->
             </div>
             <div class="form-group">
             <%= f.label :email %>

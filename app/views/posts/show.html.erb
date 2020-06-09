@@ -15,7 +15,6 @@
         <%= image_tag @post.image.url, class: "post-img" %>
       </div>
       <div class="col-md-5 post-info">
-        
         <h4><i class="fas fa-user fa-fw"></i>Climbers Info</h4>
         <div class="row">
           <div class="col-sm-2">
@@ -25,7 +24,6 @@
               <%= image_tag "unregistered_icon2.png", class: "mx-auto d-block img-thumbnail rounded-circle", size: "50x50" %>
             <% end %>
           </div>
-         
           
           <div class="col-sm-10">
             <h5><%= @post.user.name %></h5>
@@ -53,7 +51,6 @@
               </li>
             </ul>
           </div>
-          
         </div>
         
         <h4 class="border-top pt-2"><i class="fas fa-map-marker-alt fa-fw"></i>Gym Info</h4>
@@ -61,14 +58,8 @@
           <p><%= @post.gym_name %></p>
         </div>
         
-      
-        
       </div>
     </div>
-    <div class="col-md-6 col-md-offset-3">
-     
-    </div>
-    
     
   </div>
   

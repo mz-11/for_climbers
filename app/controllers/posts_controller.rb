@@ -5,8 +5,8 @@ class PostsController < ApplicationController
     # eachのループ処理による「N＋１問題」を防ぐためにincludesを使用。includesは指定したモデルのデータを一括で取得しキャッシュできる。
     #:evaluation_usersはpost.rbで作成したモデル名
     
-    # @evaluation = Evaluation.find_by(user_id: current_user.id, post_id: params[:post_id])
     @evaluations = Evaluation.where(user_id: current_user.id)
+    # current_userの評価をまとめて取得
   end
   
   def show

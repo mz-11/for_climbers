@@ -9,15 +9,15 @@ https://desolate-brushlands-08978.herokuapp.com/<br>
 ##### <機能・使用技術>
 - Ruby
 - Ruby on Rails
+  - CRUD機能
+    - ユーザー登録機能、投稿一覧表示/詳細/編集/削除機能
+  - Sessionを用いたログイン/ログアウト機能
+  - 課題投稿機能
+  - 画像ファイルアップロード機能(CarrierWave https://github.com/carrierwaveuploader/carrierwave)
+  - 5段階評価機能
+  - 評価レーダーチャート表示機能（グラフ描画ライブラリchart.js https://www.chartjs.org/使用）
 - jQuery
 - cloud9
 - Heroku
 - Bootstrap
 - MySQL
-- CRUD機能
-  - ユーザー登録機能、投稿一覧表示/詳細/編集/削除機能
-- Sessionを用いたログイン/ログアウト機能
-- 課題投稿機能
-- 画像ファイルアップロード機能(CarrierWave)
-- 5段階評価機能
-- 評価レーダーチャート表示機能（JavaScriptグラフ描画ライブラリ使用）

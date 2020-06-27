@@ -8,9 +8,9 @@
 - Ruby
 - Ruby on Rails
 - jQuery
-- AWS
-- Bootstrap
+- cloud9
 - Heroku
+- Bootstrap
 - MySQL
 - CRUD機能
   - ユーザー登録機能、投稿一覧表示/詳細/編集/削除機能

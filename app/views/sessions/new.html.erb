@@ -1,24 +1,27 @@
 <div class="login-wrapper">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-6 my-5 users-new-container ">
-        <h2 class="text-center">Login</h2>
-        
+      <div class="col-md-6 my-5 users-new-container">
+        <h2 class="text-center mb-4">Login</h2>
+        <p class="text-center">【採用ご担当者様へ】<br>下記Loginボタンより、すぐにログイン可能です。</h4>
         <%= form_with scope: :session, url: login_path, local: true do |f| %>
         <!--sessionモデルは存在しないので@sessionとはかけない。scorpを用いてどのURLに対してリクエストを出すかというオプションを追加する必要がある-->
         <!--local: trueでAjaxを解除し、flashメッセージを表示する-->
         <div class="form-group">
           <%= f.label :email %>
-          <%= f.text_field :email, class: "form-control" %>
+          <%= f.text_field :email, class: "form-control", value: "test@test.com" %>
         </div>
         <div class="form-group">
           <%= f.label :password %>
-          <%= f.password_field :password, class: "form-control" %>
+          <%= f.password_field :password, class: "form-control", value: "test0000"%>
         </div>
-        
         <%= f.submit "Login", class: "btn btn-block btn-primary mt-4" %>
         <% end %>
-        
+        <div class="recruit-account text-center mt-3">
+          <p>＜採用担当者様 専用アカウント＞<br>※フォームに予め入力済</p>
+          <p>メールアドレス：test@test.com</p>
+          <p>パスワード：test0000</p>
+        </div>
       </div>
     </div>
   </div>

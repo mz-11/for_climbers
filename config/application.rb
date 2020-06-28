@@ -15,5 +15,15 @@ module ForClimbers
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    
+    config.generators do |g| 
+    #rails generateコマンドを使う際にrspec用のスペックファイルも一緒に作るかどうかの設定。
+    #modelとcontrollerスペックの定形コードはデフォルトで自動的に作成される。
+      g.test_framework :rspec,
+       fictures: false,
+       view_specs: false,
+       helper_specs: false,
+       routing_specs: false
+     end
   end
 end

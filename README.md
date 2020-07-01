@@ -15,7 +15,7 @@ https://desolate-brushlands-08978.herokuapp.com/<br>
   - 課題投稿機能
   - 画像ファイルアップロード機能(CarrierWave https://github.com/carrierwaveuploader/carrierwave)
   - 5段階評価機能
-  - 評価レーダーチャート表示機能（グラフ描画ライブラリchart.js https://www.chartjs.org/使用）
+  - 評価レーダーチャート表示機能（グラフ描画ライブラリchart.js https://www.chartjs.org/ ）
 - jQuery
 - cloud9
 - Heroku

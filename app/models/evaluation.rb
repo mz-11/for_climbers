@@ -20,6 +20,3 @@ end
 # power = Evaluations.where("category = power")これは コントローラーに書いていく
 # 繰り返し記述する内容についてmodelでメソッドとしてまとめる
 # 四則演算もmodelにアクティブレコードや生SQLで記述する
-
-
-

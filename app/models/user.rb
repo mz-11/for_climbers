@@ -5,7 +5,7 @@ class User < ApplicationRecord
    validates :email, presence: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}, uniqueness: true
    
    # 半角英数字をそれぞれ1種類以上含む8文字以上100文字以下の正規表現
-   # validates :password, presence: true, format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}+\z/i}, uniqueness: true passwordにuniqunessはつけない!
+   # passwordにuniqunessはつけない!
    validates :password, presence: true, format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}+\z/i}
    
    

@@ -35,7 +35,7 @@ RSpec.describe User, type: :model do
         password: "example1234"
       ) #2件目のユーザーをテスト対象のオブジェクトとしてインスタンス化した。
       user.valid?
-      expect(user.errors[:email]).to include("はすでに存在します")
+      expect(user.errors[:email]).to include("has already been taken")
     end
     
     it "重複した名前なら無効な状態であること" do
@@ -50,20 +50,20 @@ RSpec.describe User, type: :model do
         password: "example1234"
       )
       user.valid?
-      expect(user.errors[:name]).to include("はすでに存在します")
+      expect(user.errors[:name]).to include("has already been taken")
     end
   
     it "名前の文字数が15文字以内であること" do
       user = User.new(name: "a" * 16)
-      user.valid?
-      expect(user.errors[:name]).to include("は15文字以内で入力してください")
+      # expect(user.errors[:name]).to include("is too long (maximum is 15 characters)")
+      expect(user).to be_invalid
     end
-     
+    
     # 正規表現のテスト
-    
-    # expect().to match(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
-    
-    # describe context を使用しスペックをDRYにする
+    it "メールアドレスの正規表現と一致すること" do
+      user = User.new(email: "test@example.com")
+      expect(user[:email]).to match(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+    end
   end
 
 end

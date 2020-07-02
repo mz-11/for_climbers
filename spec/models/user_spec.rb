@@ -62,8 +62,14 @@ RSpec.describe User, type: :model do
     # 正規表現のテスト
     it "メールアドレスの正規表現と一致すること" do
       user = User.new(email: "test@example.com")
-      expect(user[:email]).to match(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+      expect(user.email).to match(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
     end
+    
+    it "パスワードの正規表現と一致すること" do
+      user = User.new(password: "example1234")
+      expect(user.password).to match(/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}+\z/i)
+    end
+    
   end
 
 end

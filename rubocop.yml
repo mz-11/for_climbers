@@ -1,5 +1,0 @@
-inherit_from:
-  - .rubocop_airbnb.yml
-  
-Rails:
-  Enabled: true

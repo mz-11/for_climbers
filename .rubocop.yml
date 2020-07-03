@@ -1,0 +1,48 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+  
+Rails:
+  Enabled: true
+
+
+# 以下にはrubocopで検証したくないフォルダを指定する
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'vendor/**/**/*'
+    - 'spec/*'
+    
+    
+
+# 日本語でのコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Layout/FirstHashElementLineBreak:
+  Enabled: false
+
+Airbnb/OptArgParameters:
+  Enabled: false
+
+Style/ColonMethodCall:
+  Enabled: false
+
+Layout/IndentationConsistency:
+  Enabled: false
+
+Layout/IndentationWidth:
+  Enabled: false
+
+Style/MixinUsage:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: false

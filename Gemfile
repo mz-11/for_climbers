@@ -47,6 +47,7 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'rspec-rails'
   gem 'factory_bot_rails' #テストデータ作成支援 ダミーインスタンスを簡単に作成できる
+  gem 'rubocop-airbnb' #追記
 end
 
 group :development do

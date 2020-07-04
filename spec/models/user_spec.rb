@@ -69,7 +69,5 @@ RSpec.describe User, type: :model do
       user = User.new(password: "example1234")
       expect(user.password).to match(/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}+\z/i)
     end
-
   end
-
 end

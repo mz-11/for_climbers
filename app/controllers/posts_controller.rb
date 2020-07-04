@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     @posts = Post.all.includes(:evaluation_users)
     # eachのループ処理による「N＋１問題」を防ぐためにincludesを使用。includesは指定したモデルのデータを一括で取得しキャッシュできる。
     #:evaluation_usersはpost.rbで作成したモデル名
-
+    
     @evaluations = Evaluation.where(user_id: current_user.id)
     # current_userの評価をまとめて取得
   end
@@ -55,8 +55,14 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path, success: '投稿を削除しました'
   end
+<<<<<<<<< saved version
 
   private
+
+=========
+
+  private
+>>>>>>>>> local version
   def post_params
     params.require(:post).permit(:image, :gym_name, :grade, :category, :description)
   end

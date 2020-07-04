@@ -16,14 +16,18 @@ class ApplicationController < ActionController::Base
       redirect_to login_path, danger:"投稿を見るにはログインしてください"
     end
   end
-   
+
   def current_user #現在ログインしているuserを返すメソッド
     # https://qiita.com/aiandrox/items/f4215471f40325d69523
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
-  
+
   def logged_in? #ログインしているか確認するメソッド
     !current_user.nil?
   end
+<<<<<<<<< saved version
+
+=========
   
+>>>>>>>>> local version
 end

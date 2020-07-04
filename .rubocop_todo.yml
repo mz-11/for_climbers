@@ -108,8 +108,8 @@ Layout/TrailingBlankLines:
 # Offense count: 87
 # Cop supports --auto-correct.
 # Configuration parameters: AllowInHeredoc.
-Layout/TrailingWhitespace:
-  Exclude:
+# Layout/TrailingWhitespace:
+#   Exclude:
     - 'app/controllers/application_controller.rb'
     - 'app/controllers/evaluations_controller.rb'
     - 'app/controllers/pages_controller.rb'

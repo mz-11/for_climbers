@@ -10,6 +10,7 @@ https://desolate-brushlands-08978.herokuapp.com/<br>
 - Ruby
 - Ruby on Rails
   - RSpecでテスト記述
+  - Rubocopを使用しコード規約に沿った開発
   - CRUD機能
     - ユーザー登録機能、投稿一覧表示/詳細/編集/削除機能
   - Sessionを用いたログイン/ログアウト機能

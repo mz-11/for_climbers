@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
     user = User.find_by(email: session_params[:email])
     if user && user.authenticate(session_params[:password])
-      #authenticateメソッドは引数で受け取ったpasswordをハッシュ化してdigestと一致するか調べる
+      # authenticateメソッドは引数で受け取ったpasswordをハッシュ化してdigestと一致するか調べる
       session[:user_id] = user.id
       redirect_to posts_path, success: "ログインしました"
     else
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
   def destroy
     # session.delite(:user_id) #セッションからuser_idをピンポイントで削除
     # @current_user = nil session.delete(:user_id)だけではcurrent_userメソッドが使えるままになっているため、ユーザー情報を削除
-    reset_session #ユーザーに紐づく情報を全て削除
+    reset_session # ユーザーに紐づく情報を全て削除
     redirect_to root_path, info: "ログアウトしました"
   end
 

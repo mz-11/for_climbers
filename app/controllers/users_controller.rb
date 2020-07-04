@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params #passwordの実装にはhas_secure_passwordをモデルに設定する
+  def user_params # passwordの実装にはhas_secure_passwordをモデルに設定する
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

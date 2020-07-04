@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
     # @profile = Profile.find_by(id: params[:id])
     # current_userに関連付けしているため、ここは書かなくて良い。 ルーティングがresourceなのもcurrent_userのみで値を引き出せるため。
 
-    @posts = Post.all.includes(:evaluation_users) #評価した投稿一覧用
+    @posts = Post.all.includes(:evaluation_users) # 評価した投稿一覧用
 
     # group byを使ってまとめて取得したほうが良いのか？
     # @category_point = Evaluation.select("category, sum(point)").group("category")

@@ -16,9 +16,7 @@ class User < ApplicationRecord
    has_one :profile, dependent: :destroy
    has_many :evaluations, dependent: :destroy
    has_many :evaluation_posts, through: :evaluations, source: :post
-   # throughオプションによりevaluations経由でpostを取得
-   # sourceオプションでevaluation.rbで設定しているbelongs_to :postを参照する。これによりuser.evaluation_postsと書けばuserが評価した投稿を一気に取得できる
-   # オプションはアソシエーションの名前を外部キーの名前から外れた名前にする場合に設定する
+  # throughオプションによりevaluations経由でpostを取得
+  # sourceオプションでevaluation.rbで設定しているbelongs_to :postを参照。これによりuser.evaluation_postsと書けばuserが評価した投稿を一気に取得できる。
+  # sourceはアソシエーション名が外部キー名と異なる場合に設定する。
 end
-
-

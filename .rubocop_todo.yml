@@ -14,16 +14,16 @@ Layout/ClosingParenthesisIndentation:
 
 # Offense count: 2
 # Cop supports --auto-correct.
-Layout/CommentIndentation:
-  Exclude:
+# Layout/CommentIndentation:
+#   Exclude:
     - 'app/controllers/posts_controller.rb'
     - 'app/models/user.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AllowAdjacentOneLineDefs, NumberOfEmptyLines.
-Layout/EmptyLineBetweenDefs:
-  Exclude:
+# Layout/EmptyLineBetweenDefs:
+#   Exclude:
     - 'app/controllers/profiles_controller.rb'
 
 # Offense count: 5

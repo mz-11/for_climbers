@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   def show
     # @profile = Profile.find_by(id: params[:id])
-    #current_userに関連付けしているため、ここは書かなくて良い。 ルーティングがresourceなのもcurrent_userのみで値を引き出せるため。
+    # current_userに関連付けしているため、ここは書かなくて良い。 ルーティングがresourceなのもcurrent_userのみで値を引き出せるため。
     
     @posts = Post.all.includes(:evaluation_users) #評価した投稿一覧用
     
@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
     # @balance = Evaluation.where(user_id: current_user.id, category: "Balance")
     # @move = Evaluation.where(user_id: current_user.id, category: "Move")
     # @endurance = Evaluation.where(user_id: current_user.id, category: "Endurance")
-    #値がnillのときは？？？
+    # 値がnillのときは？？？
     
     # @power_sum = @power.all.sum(:point)
     # @dynamic_sum = @dynamic.all.sum(:point)
@@ -76,9 +76,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new 
   end
   
-  
   def create
-    # binding.pry
     @profile = Profile.new(profile_params)
     # @profile = current_user.profiles.new(profile_params)
     if @profile.save

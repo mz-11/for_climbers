@@ -11,22 +11,14 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
-    
     # プロフィールを登録していない場合はサンプルアイコンを表示
     @profile = Profile.find_by(user_id: params[:user_id])
-      # @profile
-    # else
-    #   @profile.profile_image 
-    # end
   end
   
   def new
     @post = Post.new
   end
-  
-  # def edit
-  # end
-  
+
   def create
     # binding.pry
     # @post = Post.new(post_params)
@@ -69,5 +61,4 @@ class PostsController < ApplicationController
     params.require(:post).permit(:image, :gym_name, :grade, :category, :description)
   end
   
-
 end

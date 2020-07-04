@@ -1,6 +1,9 @@
 inherit_from:
+  - .rubocop_todo.yml
   - .rubocop_airbnb.yml
+  - .rubocop_todo.yml
   
+# Railsに特化したCopを実行するための設定
 Rails:
   Enabled: true
 
@@ -45,4 +48,8 @@ Style/MixinUsage:
   Enabled: false
 
 Style/MutableConstant:
+  Enabled: false
+  
+# Line is too long を無視
+Metrics/LineLength:
   Enabled: false

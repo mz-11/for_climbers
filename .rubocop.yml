@@ -54,6 +54,6 @@ Style/MutableConstant:
 Metrics/LineLength:
   Enabled: false
 
-# Space missing inside {.を無視
+# Space missing inside {. }.を無視
 Layout/SpaceInsideBlockBraces:
   Exclude: false

@@ -52,14 +52,14 @@ Layout/ClosingParenthesisIndentation:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Layout/SpaceAfterColon:
-  Exclude:
+# Layout/SpaceAfterColon:
+#   Exclude:
     - 'app/controllers/posts_controller.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
-Layout/SpaceAfterComma:
-  Exclude:
+# Layout/SpaceAfterComma:
+#   Exclude:
     - 'app/models/evaluation.rb'
 
 # Offense count: 2

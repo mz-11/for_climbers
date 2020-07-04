@@ -47,7 +47,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  
+
   # アップロードできる拡張子を制限
   def extension_whitelist
     %w(jpg jpeg gif png)
@@ -58,13 +58,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-  
-  
+
   # 投稿画像のサイズ制限
   def size_range
     1..10.megabytes
   end
-  
+
   # 元画像の縦横比を維持したまま width を最大 600px、height を最大 400 pxにリサイズ
   process resize_to_limit: [600, 400]
 end

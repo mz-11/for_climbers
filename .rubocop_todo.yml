@@ -67,8 +67,8 @@ Layout/ClosingParenthesisIndentation:
 # Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
 # SupportedStyles: space, no_space
 # SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceInsideBlockBraces:
-  Exclude:
+# Layout/SpaceInsideBlockBraces:
+#   Exclude:
     - 'app/models/evaluation.rb'
 
 # Offense count: 6

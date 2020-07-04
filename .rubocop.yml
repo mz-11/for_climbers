@@ -53,3 +53,7 @@ Style/MutableConstant:
 # Line is too long を無視
 Metrics/LineLength:
   Enabled: false
+
+# Space missing inside {.を無視
+Layout/SpaceInsideBlockBraces:
+  Exclude: false

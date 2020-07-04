@@ -36,38 +36,38 @@ class ProfilesController < ApplicationController
 
     # binding.pry
     @power_search = Evaluation.search(current_user.id, "Power")
-    unless @power_search.blank?
-      @power = @power_search.average(:point) / 5 * 100
-    else
+    if @power_search.blank?
       @power = 0
+    else
+      @power = @power_search.average(:point) / 5 * 100
     end
 
     @dynamic_search = Evaluation.search(current_user.id, "Dynamic")
-    unless @dynamic_search.blank?
-      @dynamic = @dynamic_search.average(:point) / 5 * 100
-    else
+    if @dynamic_search.blank?
       @dynamic = 0
+    else
+      @dynamic = @dynamic_search.average(:point) / 5 * 100
     end
 
     @balance_search = Evaluation.search(current_user.id, "Balance")
-    unless @balance_search.blank?
-      @balance = @balance_search.average(:point) / 5 * 100
-    else
+    if @balance_search.blank?
       @balance = 0
+    else
+      @balance = @balance_search.average(:point) / 5 * 100
     end
 
    @move_search = Evaluation.search(current_user.id, "Move")
-    unless @move_search.blank?
-      @move = @move_search.average(:point) / 5 * 100
-    else
+    if @move_search.blank?
       @move = 0
+    else
+      @move = @move_search.average(:point) / 5 * 100
     end
 
     @endurance_search = Evaluation.search(current_user.id, "Endurance")
-    unless @endurance_search.blank?
-      @endurance = @endurance_search.average(:point) / 5 * 100
-    else
+    if @endurance_search.blank?
       @endurance = 0
+    else
+      @endurance = @endurance_search.average(:point) / 5 * 100
     end
   end
 

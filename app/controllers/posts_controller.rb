@@ -1,10 +1,9 @@
 class PostsController < ApplicationController
-
   def index
     @posts = Post.all.includes(:evaluation_users)
     # eachのループ処理による「N＋１問題」を防ぐためにincludesを使用。includesは指定したモデルのデータを一括で取得しキャッシュできる。
     #:evaluation_usersはpost.rbで作成したモデル名
-    
+
     @evaluations = Evaluation.where(user_id: current_user.id)
     # current_userの評価をまとめて取得
   end
@@ -28,8 +27,8 @@ class PostsController < ApplicationController
 
     @post = current_user.posts.new(post_params)
     if @post.save
-      #save!とすればレコードの作成・保存に失敗時例外を発生させることでエラーが生じる
-      redirect_to posts_path, success:"投稿に成功しました"
+      # save!とすればレコードの作成・保存に失敗時例外を発生させることでエラーが生じる
+      redirect_to posts_path, success: "投稿に成功しました"
     else
       flash.now[:danger] = "投稿に失敗しました"
       render :new
@@ -55,16 +54,10 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path, success: '投稿を削除しました'
   end
-<<<<<<<<< saved version
 
   private
 
-=========
-
-  private
->>>>>>>>> local version
   def post_params
     params.require(:post).permit(:image, :gym_name, :grade, :category, :description)
   end
-
 end

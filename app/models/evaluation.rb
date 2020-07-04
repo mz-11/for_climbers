@@ -14,7 +14,7 @@ class Evaluation < ApplicationRecord
   # end
 
   # :searchはクエリ用のメソッドの一種として呼び出す事ができる。
-  scope :search, -> (a, b) {where("user_id = ? and category = ?", a, b)}
+  scope :search, -> (a, b) { where("user_id = ? and category = ?", a, b) }
 end
 
 # power = Evaluations.where("category = power")これは コントローラーに書いていく

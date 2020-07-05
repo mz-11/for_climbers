@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0', group: :development
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'  #コメントアウト has_secure_passwordを使ってパスワードをハッシュ化するために必要なハッシュ関数
+gem 'bcrypt', '~> 3.1.7' # has_secure_passwordを使ってパスワードをハッシュ化するために必要なハッシュ関数
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -39,12 +39,14 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-   
   # 追加gem
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails' # テストデータ作成支援 ダミーインスタンスを簡単に作成できる
+  gem 'rubocop-airbnb' # 追記
 end
 
 group :development do
@@ -54,6 +56,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-commands-rspec' # springを使用するためのgem。テストの立ち上げ速度を上げる
 end
 
 group :test do
@@ -64,7 +67,7 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-group :production do #デプロイ用に追加
+group :production do # デプロイ用に追加
   gem 'pg'
 end
 
@@ -78,4 +81,4 @@ gem 'rename'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'bootstrap', '~> 4.4.1'
-gem 'fog-aws' #ファイルの保存先を AWS S3 に指定するために必要
+gem 'fog-aws' # ファイルの保存先をAWS S3に指定するために必要

@@ -3,11 +3,13 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   context "基本的なフォームのバリデーション" do
     it "名前、メール、パスワードがあれば有効な状態であること" do
-      user = User.new(
-        name: "Aaron",
-        email: "aaaa@aaaa.com",
-        password: "aaaa0000",
-      )
+      # user = User.new(
+      #   name: "Aaron",
+      #   email: "aaaa@aaaa.com",
+      #   password: "aaaa0000",
+      # )
+      # 以下はFactoryBoyを使用
+      user = build(:user)
         expect(user).to be_valid
     end
 

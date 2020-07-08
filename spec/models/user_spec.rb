@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
   end
-  
+
   context "基本的なフォームのバリデーション" do
     it "名前、メール、パスワードがあれば有効な状態であること" do
       # user = User.new(

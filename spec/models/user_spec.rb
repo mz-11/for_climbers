@@ -1,28 +1,33 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  before do
+    @user = FactoryBot.build(:user)
+  end
+  
   context "基本的なフォームのバリデーション" do
     it "名前、メール、パスワードがあれば有効な状態であること" do
       # user = User.new(
       #   name: "Aaron",
       #   email: "aaaa@aaaa.com",
       #   password: "aaaa0000",
-      # )
+      # )after(:build) do |user|
       # 以下はFactoryBoyを使用
-      user = build(:user)
-        expect(user).to be_valid
+      expect(@user).to be_valid
     end
 
     it "名前がなければ無効な状態であること" do
-      user = User.new(name: nil)
-      user.valid? # valid?:ActiveRecordメソッドで、モデルオブジェクトのバリデーションが成功したかどうか真偽値で返す
-      expect(user.errors[:name]).to include("can't be blank") # toをnot_toにすると失敗の確認もできる
+      # user = User.new(name: nil)
+      @user = FactoryBot.build(:user, name: nil) # 属性を上書きして登録
+      @user.valid? # valid?:ActiveRecordメソッドで、モデルオブジェクトのバリデーションが成功したかどうか真偽値で返す
+      expect(@user.errors[:name]).to include("can't be blank") # toをnot_toにすると失敗の確認もできる
     end
 
     it "メールアドレスがなければ無効な状態であること" do
-      user = User.new(email: nil)
-      user.valid?
-      expect(user.errors[:email]).to include("can't be blank")
+      # user = User.new(email: nil)
+      @user = FactoryBot.build(:user, email: nil) # 属性を上書きして登録
+      @user.valid?
+      expect(@user.errors[:email]).to include("can't be blank")
     end
 
     it "重複したメールアドレスなら無効な状態であること" do

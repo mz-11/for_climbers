@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   before do
     # @post = FactoryBot.create(:post, user: user) association :user設定したので以下のように書くだけで良い
-    @post = FactoryBot.build(:post)
+    @post = FactoryBot.create(:post)
   end
 
   context "基本的な投稿フォームのバリデーション" do

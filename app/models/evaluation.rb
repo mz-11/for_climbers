@@ -17,6 +17,6 @@ class Evaluation < ApplicationRecord
   scope :search, -> (a, b) { where("user_id = ? and category = ?", a, b) }
 end
 
-# power = Evaluations.where("category = power")これは コントローラーに書いていく
+# power = Evaluation.where("category = power")これは コントローラーに書いていく
 # 繰り返し記述する内容についてmodelでメソッドとしてまとめる
 # 四則演算もmodelにアクティブレコードや生SQLで記述する

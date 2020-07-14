@@ -34,12 +34,12 @@ RSpec.describe User, type: :model do
     it "重複したメールアドレスなら無効な状態であること" do
       User.create(
         name: "joe",
-        email: "test@example.com",
+        email: "testexample.com",
         password: "example1234"
       ) # テストの前にcreateでユーザーを保存
       user = User.new(
         name: "joe",
-        email: "test@example.com",
+        email: "testexample.com",
         password: "example1234"
       ) # 2件目のユーザーをテスト対象のオブジェクトとしてインスタンス化した。
       user.valid?
@@ -49,12 +49,12 @@ RSpec.describe User, type: :model do
     it "重複した名前なら無効な状態であること" do
       User.create(
         name: "tarou",
-        email: "test@example.com",
+        email: "testexample.com",
         password: "example1234"
       )
       user = User.new(
         name: "tarou",
-        email: "test@example.com",
+        email: "testexample.com",
         password: "example1234"
       )
       user.valid?
@@ -69,8 +69,8 @@ RSpec.describe User, type: :model do
 
     # 正規表現のテスト
     it "メールアドレスの正規表現と一致すること" do
-      user = User.new(email: "test@example.com")
-      expect(user.email).to match(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+      user = User.new(email: "testexample.com")
+      expect(user.email).to match(/\A[\w+\-.]+[a-z\d\-.]+\.[a-z]+\z/i)
     end
 
     it "パスワードの正規表現と一致すること" do

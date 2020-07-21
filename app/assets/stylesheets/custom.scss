@@ -1,9 +1,52 @@
-// .alert {
-//   z-index: 100000;
-// }
+// 大デバイス（デスクトップ, 1200px 未満）
+@media (min-width: 992px) {
+ .title {
+   font-size: 7.0rem;
+ }
+ .subtitle {
+   font-size: 2.0rem;
+ }
+}
+// 中デバイス（タブレット, 992px 未満）
+@media (max-width: 991.98px) {
+ .title {
+   font-size: 5.0rem;
+ }
+  .subtitle {
+   font-size: 1.5rem;
+ }
+}
+// 小デバイス（横向きモバイル, 768px 未満）
+@media (max-width: 767.98px) {
+ .title {
+   font-size: 3.0rem;
+ }
+ .subtitle {
+   font-size: 1.5rem;
+ }
+ .explanation h1 {
+   font-size: 2.0rem;
+ }
+}
+// @include media-breakpoint-up(sm) {
+// 極小デバイス（縦向きモバイル, 576px 未満）
+@media (max-width: 575.98px) {
+ .title {
+   font-size: 2.5rem;
+ }
+  .subtitle {
+   font-size: 1.5rem;
+ }
+ .explanation h5 {
+   font-size: 1.0rem;
+ }
+}
+
+
 
 .jumbotron {
   // background-image: url("top2.jpg");
+  font-size: 16px;
   background-image: image-url("top2.jpg"); 
   width: 100%;
   background-size: cover;

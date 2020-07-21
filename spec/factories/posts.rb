@@ -5,5 +5,5 @@ FactoryBot.define do
     grade { "2級" }
     category { "power" }
     association :user
-  end 
+  end
 end

@@ -10,13 +10,14 @@
             <%= f.label :image %>
             <%= f.file_field :image, value: @post.image, class: 'form-control-file'%>
             <div class="text-center mt-2">
-              <%= image_tag @post.image.url(:thumb) unless @post.image.blank? %> <!-- carrierwaveでサムネイルを保存し、ここで表示 -->
+              <%= image_tag @post.image.url(:thumb) if !@post.image.blank? %>
+              <!-- carrierwaveでサムネイルを保存し、ここで表示 -->
             </div>
           </div>
           
           <div class="form-group">
             <%= f.label :gym_name %>
-            <%= f.text_area :gym_name, value: @post.gym_name,  class: 'form-control'%>
+            <%= f.text_area :gym_name, value: @post.gym_name, class: 'form-control'%>
           </div>
           
           <div class="form-group">
@@ -26,7 +27,8 @@
           
           <div class="form-group">
             <%= f.label :category %>
-            <%= f.select :category, [["Power", "Power"], ["Dynamic", "Dynamic"], ["Balance", "Balance"], ["Move", "Move"], ["Endurance", "Endurance"]], {include_blank: true, selected: @post.category}, {class: 'form-control'} %> <!-- f.select( プロパティ名, タグの情報, {オプション}, {HTMLオプション} )-->
+            <%= f.select :category, [["Power", "Power"], ["Dynamic", "Dynamic"], ["Balance", "Balance"], ["Move", "Move"], ["Endurance", "Endurance"]], {include_blank: true, selected: @post.category}, {class: 'form-control'} %> 
+            <!-- f.select( プロパティ名, タグの情報, {オプション}, {HTMLオプション} )-->
           </div>
          
           <div class="form-group">

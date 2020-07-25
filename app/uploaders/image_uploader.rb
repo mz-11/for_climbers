@@ -66,7 +66,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # 元画像の縦横比を維持したまま width を最大 600px、height を最大 400 pxにリサイズ
   process resize_to_limit: [600, 400]
-  
+
   # サムネイル保存する
   version :thumb do
     process :resize_to_limit => [320, 320]

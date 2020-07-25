@@ -2,13 +2,17 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6 my-5">
-        <h3 class="text-center title">プロフィールの編集</h3>
+        <h3 class="text-center">プロフィールの編集</h3>
         
         
         <%= form_with model: @profile, scope: :profile, url: profile_path, method: :put, local: true do |f| %>
           <div class="form-group">
             <%= f.label :profile_image %>
-            <%= f.file_field :profile_image, class: 'form-control-file'%>
+            <%= f.file_field :profile_image, value: @profile.profile_image, class: 'form-control-file'%>
+            <div class="text-center mt-2">
+              <%= image_tag @profile.profile_image.url(:thumb) if !@profile.profile_image.blank? %>
+              <!-- carrierwaveでサムネイルを保存し、ここで表示 -->
+            </div>
           </div>
           
           <div class="form-group">

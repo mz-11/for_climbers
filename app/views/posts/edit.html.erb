@@ -5,30 +5,30 @@
         <h3 class="text-center">投稿の編集</h3>
        
         <%= form_with model: @post, url: post_path, local: true do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
           <div class="form-group">
             <%= f.label :image %>
-            <!--表記をimageではなく、"写真"のようにしたい 第2引数に指定すればできるはずだが上手く行かない…-->
-            <%= f.file_field :image, class: 'form-control-file'%>
+            <%= f.file_field :image, value: @post.image, class: 'form-control-file'%>
           </div>
           
           <div class="form-group">
             <%= f.label :gym_name %>
-            <%= f.text_area :gym_name, class: 'form-control'%>
+            <%= f.text_area :gym_name, value: @post.gym_name,  class: 'form-control'%>
           </div>
           
           <div class="form-group">
             <%= f.label :grade %>
-              <%= f.select :grade, [["8級", "8級"], ["7級", "7級"], ["6級", "6級"], ["5級", "5級"], ["4級", "4級"], ["3級", "3級"], ["2級", "2級"], ["1級", "1級"], ["初段", "初段"], ["二段", "二段"], ["三段", "三段"], ], {include_blank: true, selected: "グレードを選択してください"}, {class: 'form-control'} %>
+              <%= f.select :grade, [["8級", "8級"], ["7級", "7級"], ["6級", "6級"], ["5級", "5級"], ["4級", "4級"], ["3級", "3級"], ["2級", "2級"], ["1級", "1級"], ["初段", "初段"], ["二段", "二段"], ["三段", "三段"], ], {include_blank: true, selected: @post.grade}, {class: 'form-control'} %>
           </div>
           
           <div class="form-group">
             <%= f.label :category %>
-            <%= f.select :category, [["Power", "Power"], ["Dynamic", "Dynamic"], ["Balance", "Balance"], ["Move", "Move"], ["Endurance", "Endurance"]], {include_blank: true, selected: "カテゴリー選択"}, {class: 'form-control'} %> <!-- f.select( プロパティ名, タグの情報, {オプション}, {HTMLオプション} )-->
+            <%= f.select :category, [["Power", "Power"], ["Dynamic", "Dynamic"], ["Balance", "Balance"], ["Move", "Move"], ["Endurance", "Endurance"]], {include_blank: true, selected: @post.category}, {class: 'form-control'} %> <!-- f.select( プロパティ名, タグの情報, {オプション}, {HTMLオプション} )-->
           </div>
          
           <div class="form-group">
             <%= f.label :description %>
-            <%= f.text_area :description, class: 'form-control' %>
+            <%= f.text_area :description, value: @post.description, class: 'form-control' %>
           </div>
           <%= f.submit '保存', class: 'btn btn-primary btn-block' %>
         <% end %>

@@ -113,3 +113,22 @@
   height: 128px;
   object-fit: contain;
 }
+
+.error_messages {
+  background-color:#FFEFEF;
+  margin: 0 0 1em 0;
+  padding: 10px;
+  color:#C25338;
+  border: 1px solid #D4440D;
+  line-height: 1.5;
+  clear: both;
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+  ul {
+   margin: 0;
+   li {
+    list-style: none;
+   }
+  }
+ 
+}

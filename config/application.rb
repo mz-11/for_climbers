@@ -25,5 +25,6 @@ module ForClimbers
        helper_specs: false,
        routing_specs: false
      end
+    config.i18n.default_locale = :ja # エラーメッセージの日本語化
   end
 end

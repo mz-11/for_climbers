@@ -9,6 +9,9 @@
           <div class="form-group">
             <%= f.label :image %>
             <%= f.file_field :image, value: @post.image, class: 'form-control-file'%>
+            <div class="text-center mt-2">
+              <%= image_tag @post.image.url(:thumb) unless @post.image.blank? %> <!-- carrierwaveでサムネイルを保存し、ここで表示 -->
+            </div>
           </div>
           
           <div class="form-group">

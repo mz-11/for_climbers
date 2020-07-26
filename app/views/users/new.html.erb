@@ -6,6 +6,7 @@
         <h2 class="text-center">Sign up</h2>
   
         <%= form_with model: @user, local: true do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %> <!-- エラーメッセージの呼び出し -->
          <div class="form-group">
           <%= f.label :name %>
           <%= f.text_field :name, class: 'form-control' %><!--テキストボックスを表示。入力フォームには他にもチェックボックスなどがある-->

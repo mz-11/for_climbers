@@ -83,3 +83,4 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'bootstrap', '~> 4.4.1'
 gem 'fog-aws' # ファイルの保存先をAWS S3に指定するために必要
+gem 'rails-i18n' # エラーメッセージの日本語化

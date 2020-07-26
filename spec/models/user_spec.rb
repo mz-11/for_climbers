@@ -21,14 +21,14 @@ RSpec.describe User, type: :model do
       # user = User.new(name: nil)
       user = FactoryBot.build(:user, name: nil) # 属性を上書きして登録
       user.valid? # valid?:ActiveRecordメソッドで、モデルオブジェクトのバリデーションが成功したかどうか真偽値で返す
-      expect(user.errors[:name]).to include("can't be blank") # toをnot_toにすると失敗の確認もできる
+      expect(user.errors[:name]).to include("を入力してください") # toをnot_toにすると失敗の確認もできる
     end
 
     it "メールアドレスがなければ無効な状態であること" do
       # user = User.new(email: nil)
       user = FactoryBot.build(:user, email: nil) # 属性を上書きして登録
       user.valid?
-      expect(user.errors[:email]).to include("can't be blank")
+      expect(user.errors[:email]).to include("を入力してください")
     end
 
     it "重複したメールアドレスなら無効な状態であること" do
@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
         password: "example1234"
       ) # 2件目のユーザーをテスト対象のオブジェクトとしてインスタンス化した。
       user.valid?
-      expect(user.errors[:email]).to include("has already been taken")
+      expect(user.errors[:email]).to include("は不正な値です")
     end
 
     it "重複した名前なら無効な状態であること" do
@@ -58,7 +58,7 @@ RSpec.describe User, type: :model do
         password: "example1234"
       )
       user.valid?
-      expect(user.errors[:name]).to include("has already been taken")
+      expect(user.errors[:name]).to include("は不正な値です")
     end
 
     it "名前の文字数が15文字以内であること" do

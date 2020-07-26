@@ -4,6 +4,7 @@
       <div class="col-md-6 my-5">
         <h3 class="text-center">課題の投稿</h3>
         <%= form_with model: @post, url: posts_path, local: true do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
           <div class="form-group">
             <%= f.label :image %>
             <!--表記をimageではなく、"写真"のようにしたい 第2引数に指定すればできるはずだが上手く行かない…-->

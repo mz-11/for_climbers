@@ -5,6 +5,7 @@
         <h2 class="text-center">Setting</h2>
         <div class="setting-inner p-3 m-2">
           <%= form_with model: @user, local: true do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
             <div class="form-group">
             <%= f.label :name %>
             <%= f.text_field :name, class: 'form-control' %>
